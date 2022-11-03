@@ -1,13 +1,13 @@
 <script lang="ts">
 	import AdminMessage from '../AdminMessage.svelte';
 
-	export let src;
-	export let alt;
+	export let src: string;
+	export let alt: string;
 
 	let showMessage = false;
 	let loadImage = false;
 
-	const handlerClick = async (e) => {
+	const handlerClick = async (e: Event) => {
 		// agregamos esto pq el clipboard solo funciona en paginas HTTPS
 		if (navigator.clipboard) {
 			navigator.clipboard.writeText(src);

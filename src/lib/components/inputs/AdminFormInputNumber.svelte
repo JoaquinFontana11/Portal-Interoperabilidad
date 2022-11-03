@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let value;
-	export let label;
+	export let value: number;
+	export let label: string;
 	export let required = false;
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let placeholder = 'Search...';
-	export let value;
+	export let value: string;
 </script>
 
 <div class=" relative md:block">

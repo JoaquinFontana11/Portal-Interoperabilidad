@@ -11,12 +11,27 @@
 	import AdminFormEditor from './inputs/AdminFormEditor.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
 
-	export let components;
-	export let title;
-	export let submitMessage;
-	export let loading;
+	interface IOption {
+		name: string;
+		value: string | boolean | number;
+	}
+	interface Icomponent {
+		type: string;
+		label: string;
+		name: string;
+		value: any;
+		required?: boolean;
+		files?: FileList | Array<File>;
+		options?: IOption[];
+	}
 
-	const handlerSubmit = async (e) => {
+	export let components: Icomponent[];
+	export let title: string;
+	export let submitMessage: string;
+	export let loading: boolean;
+
+	const handlerSubmit = async (e: Event) => {
+		console.log(components);
 		dispatch('custom-submit', {
 			data: components.map((component) => {
 				return { input: component.name, value: component.value };

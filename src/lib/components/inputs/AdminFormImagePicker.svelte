@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	export let images = '';
+	interface Iimage {
+		url: string;
+		alt: string;
+	}
+	export let images: Iimage[];
 
 	const dispatch = createEventDispatcher();
 	let urlSelected = '';
 
-	const selectImage = (url) => {
+	const selectImage = (url: string) => {
 		urlSelected = url;
 		dispatch('image-picked', {
 			url: urlSelected
@@ -24,7 +28,7 @@
 						urlSelected == image.url ? 'border-green-600' : ''
 					}`}
 					src={image.url}
-					alt={images.alt}
+					alt={image.alt}
 					width="200px"
 				/>
 			</figure>

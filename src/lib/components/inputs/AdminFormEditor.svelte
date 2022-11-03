@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Editor from 'cl-editor/src/Editor.svelte';
-	export let label;
-	export let value;
+	export let label: string;
+	export let value: string;
 	let html = value;
 </script>
 
@@ -12,9 +12,9 @@
 	<Editor
 		{value}
 		{html}
-		on:change={(evt) => {
-			value = evt.detail;
-			html = EventTarget.detail;
+		on:change={(e) => {
+			value = e.detail;
+			html = e.detail;
 		}}
 	/>
 </div>

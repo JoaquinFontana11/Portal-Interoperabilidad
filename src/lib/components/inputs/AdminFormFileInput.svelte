@@ -1,11 +1,11 @@
 <script lang="ts">
-	export let files;
-	export let label;
+	export let files: FileList;
+	export let label: string;
 
 	let dragEnter = false;
 	let filename = '';
 
-	const dropHandler = (e) => {
+	const dropHandler = (e: any) => {
 		if (e.dataTransfer.items) {
 			// Use DataTransferItemList interface to access the file(s)
 			[...e.dataTransfer.items].forEach((item, i) => {
@@ -24,7 +24,7 @@
 		dragEnter = false;
 	};
 
-	const uploadHandler = (e) => {
+	const uploadHandler = (e: Event) => {
 		[...files].forEach((file, i) => {
 			filename = file.name;
 		});
@@ -63,7 +63,6 @@
 			<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
 				<span class="font-semibold">Click para subir</span> o arrastre y suelte una imagen
 			</p>
-			<p class="text-xs text-gray-500 dark:text-gray-400">PNG o JPG</p>
 			<p class="text-xs text-gray-500 dark:text-gray-400">{filename}</p>
 		</div>
 		<input

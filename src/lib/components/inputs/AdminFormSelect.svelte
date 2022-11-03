@@ -1,8 +1,8 @@
 <script lang="ts">
-	export let value;
-	export let label;
+	export let value: string | number | Date | boolean;
+	export let label: string;
 	export let required = false;
-	export let options;
+	export let options: any;
 </script>
 
 <div>

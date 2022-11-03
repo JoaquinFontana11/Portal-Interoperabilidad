@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 
-	export let type;
-	export let message;
+	export let type: string;
+	export let message: string;
 </script>
 
 <div

@@ -1,19 +1,11 @@
 <script lang="ts">
-	import { tweened } from 'svelte/motion';
 	import { Document, Table, VideoCamera, PresentationChartBar, Icon } from 'svelte-hero-icons';
-	export let name;
-	export let url;
+	export let name: string;
+	export let url: string;
 
-	let extension = name.split('.').at(-1);
+	let extension: string = name.split('.').at(-1);
 
-	// documentos estandar
-	// generico: gris
-	// file: pdf(rojo), doc,docx(azul)
-	// presentacion: naranja
-	// table: excel(verde)
-	// video: video(azul)
-
-	const iconAndColor = {
+	const iconAndColor: any = {
 		pdf: [Document, 'border-rose-300 hover:border-rose-500'],
 		doc: [Document, 'border-blue-300 hover:border-blue-500'],
 		docx: [Document, 'border-blue-300 hover:border-blue-500'],
@@ -24,8 +16,9 @@
 		mp4: [VideoCamera, 'border-cyan-300 hover:border-cyan-500']
 	};
 
-	const scrollContent = (e) => {
-		const paragraph = e.target.querySelector('p');
+	const scrollContent = (e: Event) => {
+		const target = e.target as Element;
+		const paragraph = target.querySelector('p');
 		if (!paragraph) return;
 
 		paragraph.scroll({
@@ -33,8 +26,9 @@
 			behavior: 'smooth'
 		});
 	};
-	const unScrollContent = (e) => {
-		const paragraph = e.target.querySelector('p');
+	const unScrollContent = (e: Event) => {
+		const target = e.target as Element;
+		const paragraph = target.querySelector('p');
 		if (!paragraph) return;
 
 		paragraph.scroll({
@@ -52,14 +46,6 @@
 	on:focus={scrollContent}
 	on:mouseleave={unScrollContent}
 >
-	<!-- <Icon
-		src={iconAndColor[extension] ? iconAndColor[extension][0] : Document}
-		class="w-18 h-18 text-gray-800 transition duration-75 dark:text-indigo-700 group-hover:text-gray-900 dark:group-hover:text-white"
-	/>
-	{extension}
-	<p>{name}</p>
-	<p>{url}</p> -->
-
 	<a
 		href="#"
 		class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"

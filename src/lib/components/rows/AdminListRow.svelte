@@ -34,17 +34,17 @@
 	<td class="h-1 py-3 px-6 text-center">
 		<div class="flex items-center w-full justify-center gap-2">
 			{#if actions.includes('edit')}
-				<a
+				<button
 					href="#"
 					class="font-medium text-indigo-600 dark:text-indigo-500 hover:underline"
-					on:click={modifyEvent}>Editar</a
+					on:click={modifyEvent}>Editar</button
 				>
 			{/if}
 			{#if actions.includes('delete')}
-				<a
+				<button
 					href="#"
 					class="font-medium text-red-600 dark:text-red-500 hover:underline"
-					on:click={deleteEvent}>Eliminar</a
+					on:click={deleteEvent}>Eliminar</button
 				>
 			{/if}
 		</div>

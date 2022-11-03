@@ -2,8 +2,8 @@
 	import { fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import AdminModalImage from './AdminModalImage.svelte';
-	export let images;
-	export let filter;
+	export let images: string;
+	export let filter: string;
 </script>
 
 <div class="grid grid-cols-4 gap-1 ">

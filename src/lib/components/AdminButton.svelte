@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Icon } from 'svelte-hero-icons';
-	export let icon;
+	import { Icon, type IconSource } from 'svelte-hero-icons';
+	export let icon: IconSource;
 </script>
 
 <div class="text-center absolute left-64 top-5 z-30">

@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { Icon } from 'svelte-hero-icons';
-	export let pos;
-	export let icon;
+	import { Icon, type IconSource } from 'svelte-hero-icons';
+	export let pos: number;
+	export let icon: IconSource;
 
-	const tops = {
-		1: 'top-12',
-		2: 'top-32'
-	};
+	const tops = ['top-12', 'top-32'];
 </script>
 
 <div class="text-center">
 	<button
-		class={`w-16 h-16 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 focus:outline-none fixed ${tops[pos]} right-6 rounded-full`}
+		class={`w-16 h-16 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 focus:outline-none fixed ${
+			tops[pos - 1]
+		} right-6 rounded-full`}
 		type="button"
 		data-drawer-target="drawer-example"
 		data-drawer-show="drawer-example"

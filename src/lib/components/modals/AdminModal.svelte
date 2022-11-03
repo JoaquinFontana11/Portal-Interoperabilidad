@@ -2,7 +2,7 @@
 	import { fly, fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { createEventDispatcher } from 'svelte';
-	export let title;
+	export let title: string;
 
 	const dispatch = createEventDispatcher();
 </script>
