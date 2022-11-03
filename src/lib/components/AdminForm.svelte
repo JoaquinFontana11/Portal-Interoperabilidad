@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+	import { IComponent } from '$lib/types/Components';
 
 	import AdminFormInputText from './inputs/AdminFormInputText.svelte';
 	import AdminFormInputNumber from './inputs/AdminFormInputNumber.svelte';
@@ -11,21 +11,9 @@
 	import AdminFormEditor from './inputs/AdminFormEditor.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
 
-	interface IOption {
-		name: string;
-		value: string | boolean | number;
-	}
-	interface Icomponent {
-		type: string;
-		label: string;
-		name: string;
-		value: any;
-		required?: boolean;
-		files?: FileList | Array<File>;
-		options?: IOption[];
-	}
+	const dispatch = createEventDispatcher();
 
-	export let components: Icomponent[];
+	export let components: IComponent[];
 	export let title: string;
 	export let submitMessage: string;
 	export let loading: boolean;

@@ -4,7 +4,6 @@
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
-	import AdminListRowPhoto from '$lib/components/rows/AdminListRowPhoto.svelte';
 
 	export let data: any;
 	let list = true;
@@ -13,44 +12,45 @@
 	const components: IComponent[] = [
 		{
 			type: 'file',
-			label: 'Imagen a agregar',
-			name: 'image',
+			label: 'Input de archivos',
+			name: 'manual',
 			value: '',
 			files: []
 		},
 		{
-			type: 'text',
-			label: 'Texto alternativo',
-			name: 'alt',
-			value: ''
+			type: 'select',
+			label: 'Tipo de archivo',
+			name: 'file',
+			value: '',
+			required: true,
+			options: [
+				{ value: 'files', name: 'Archivo' },
+				{ value: 'videos', name: 'Video' }
+			]
 		}
 	];
 
-	const imageSubmit = async (e: CustomEvent) => {
-		console.log(e.detail);
+	const fileSubmit = async (e: CustomEvent) => {
 		if (loading) return;
-
 		const { data } = e.detail;
 		const files = data[0].value;
-
-		if (!files[0].type.includes('image'))
-			throw new Error('No podes subir algo que no sea una imagen');
 
 		loading = true;
 
 		const reader = new FileReader();
 		reader.readAsDataURL(files[0]);
 		reader.onload = async (e) => {
+			// uploadImage(e.target.result);
 			const target = e.target as FileReader;
 			const fileReaderResult = target.result as string;
-			const imgData = fileReaderResult.split(',');
+			const file = fileReaderResult.split(',');
 			const body = {
-				image: imgData[1],
-				alt: data[1].value
+				file: file[1],
+				type: data[1].value,
+				name: files[0].name
 			};
-			console.log(body);
 			try {
-				await fetch(`/api/image`, {
+				await fetch(`/api/files`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -58,18 +58,17 @@
 					},
 					body: JSON.stringify(body)
 				});
-				// location.reload();
 			} catch (err) {
-				console.log('asdasd', err);
+				console.log(err);
 			} finally {
 				loading = false;
 			}
 		};
 	};
 
-	const deleteImage = async (e: CustomEvent) => {
+	const deleteFile = async (e: CustomEvent) => {
 		try {
-			await fetch(`/api/image/${e.detail.id}`, {
+			await fetch(`/api/files/${e.detail.id}`, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
@@ -94,21 +93,27 @@
 	<div class="w-3/4 h-3/4 absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
 		{#if list}
 			<AdminList
-				headers={['Imagen', 'Texto alternativo']}
-				attributes={['url', 'alt']}
-				data={JSON.parse(data.images)}
-				on:delete-doc={deleteImage}
-				caption="Imagenes"
+				headers={['Nombre', 'Extension', 'Orden']}
+				attributes={['name', 'extension', 'order']}
+				data={JSON.parse(data.files).map((file) => {
+					return {
+						_id: file._id,
+						name: file.name.split('.').at(0),
+						extension: file.name.split('.').at(-1),
+						order: file.order
+					};
+				})}
+				on:delete-doc={deleteFile}
+				caption="Archivos"
 				actions={['delete']}
-				customRow={AdminListRowPhoto}
 			/>
 		{:else}
 			<AdminForm
-				title="Formulario de alta de imagenes"
+				title="Formulario de archivos"
 				{components}
-				submitMessage="Subir imagen"
+				submitMessage="Subir archivo"
 				{loading}
-				on:custom-submit={imageSubmit}
+				on:custom-submit={fileSubmit}
 			/>
 		{/if}
 	</div>

@@ -61,7 +61,7 @@
 				/></svg
 			>
 			<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-				<span class="font-semibold">Click para subir</span> o arrastre y suelte una imagen
+				<span class="font-semibold">Click para subir</span> o arrastre y suelte un archivo
 			</p>
 			<p class="text-xs text-gray-500 dark:text-gray-400">{filename}</p>
 		</div>
