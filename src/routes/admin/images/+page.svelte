@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Plus, Table } from 'svelte-hero-icons';
-	import { IComponent } from '$lib/types/Components';
+	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';

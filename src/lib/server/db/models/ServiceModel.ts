@@ -4,9 +4,14 @@ interface IService {
 	module: string;
 	function: string;
 	organism: string;
+	name: string;
 }
 
 const serviceSchema = new Schema<IService>({
+	name: {
+		type: String,
+		required: [true, 'Un servicio tiene que tener un nombre']
+	},
 	module: {
 		type: String,
 		required: [true, 'Un servicio tiene que pertenecer a un modulo']

@@ -7,7 +7,7 @@
 </script>
 
 <div class="grid grid-cols-4 gap-1 ">
-	{#each JSON.parse(images).filter((image) => image.url.includes('pages') && image.alt.includes(filter)) as image (image._id)}
+	{#each JSON.parse(images).filter((image) => image.alt.includes(filter)) as image (image._id)}
 		<div in:fade={{ duration: 300 }} animate:flip={{ duration: 300 }}>
 			<AdminModalImage src={image.url} alt={image.alt} />
 		</div>

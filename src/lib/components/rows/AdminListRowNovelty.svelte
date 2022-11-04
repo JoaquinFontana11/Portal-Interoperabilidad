@@ -17,14 +17,16 @@
 <tr
 	class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
 >
-	<td class=" py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white flex justify-center">
+	<td class="text-center h-1 py-3 px-6 t"><span>{doc['title']}</span></td>
+	<td class="text-center h-1 py-3 px-6 t"><span>{doc['slug']}</span></td>
+	<td class=" py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
 		<img
 			class="w-16 rounded"
-			src={!doc.url || doc.url == '#' ? '/img/test.png' : doc.url}
-			alt="foto de perfil"
+			src={!doc.image || doc.image == '#' ? '/img/test.png' : doc.image}
+			alt="foto novedad"
 		/>
 	</td>
-	<td class="text-center h-1 py-3 px-6 t"><span>{doc['alt']}</span></td>
+	<td class="text-center h-1 py-3 px-6 t"><span>{doc['date']}</span></td>
 	<td class="h-1 py-3 px-6 text-center">
 		<div class="flex items-center w-full justify-center gap-2">
 			{#if actions.includes('edit')}

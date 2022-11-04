@@ -1,42 +1,40 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Plus, Table } from 'svelte-hero-icons';
 	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
-	import AdminList from '$lib/components/AdminList.svelte';
-	import AdminButton from '$lib/components/AdminButton.svelte';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
-	let list = true;
 	let loading = false;
+	const service = JSON.parse(data.service);
 
 	const components: IComponent[] = [
 		{
 			type: 'text',
 			label: 'Nombre del servicio',
 			name: 'name',
-			value: '',
+			value: service.name,
 			required: true
 		},
 		{
 			type: 'text',
 			label: 'Modulo al que pertenece',
 			name: 'module',
-			value: '',
+			value: service.module,
 			required: true
 		},
 		{
 			type: 'editor',
 			label: 'Funcion del servicio',
 			name: 'function',
-			value: '',
+			value: service.function,
 			required: true
 		},
 		{
 			type: 'text',
 			label: 'Organismo',
 			name: 'organism',
-			value: '',
+			value: service.organism,
 			required: true
 		}
 	];
@@ -54,8 +52,8 @@
 		};
 
 		try {
-			await fetch(`/api/services`, {
-				method: 'POST',
+			await fetch(`/api/services/${service._id}`, {
+				method: 'PATCH',
 				headers: {
 					'Content-Type': 'application/json',
 					Accept: 'application/json'
@@ -66,55 +64,19 @@
 			console.log(err);
 		} finally {
 			loading = false;
+			location.href = '/admin/services';
 		}
-	};
-
-	const deleteService = async (e: CustomEvent) => {
-		try {
-			await fetch(`/api/services/${e.detail.id}`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-					Accept: 'application/json'
-				}
-			});
-		} catch (err) {
-			console.log(err);
-		} finally {
-			location.href = location.href;
-		}
-	};
-
-	const modifyService = (e: CustomEvent) => {
-		location.href = `/admin/services/${e.detail.id}`;
 	};
 </script>
 
-<AdminButton
-	icon={list ? Plus : Table}
-	on:click={() => {
-		list = !list;
-	}}
-/>
 <main class="ml-56 dark:bg-gray-900 bg-gray-100 h-screen relative overflow-y-scroll">
 	<div class="w-3/4 h-3/4 absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
-		{#if list}
-			<AdminList
-				headers={['nombre', 'modulo', 'funcion', 'organismo']}
-				attributes={['name', 'module', 'function', 'organism']}
-				data={JSON.parse(data.services)}
-				on:delete-doc={deleteService}
-				on:modify-doc={modifyService}
-				caption="Servicios"
-			/>
-		{:else}
-			<AdminForm
-				title="Formulario de servicios"
-				{components}
-				submitMessage="Subir servicio"
-				{loading}
-				on:custom-submit={serviceSubmit}
-			/>
-		{/if}
+		<AdminForm
+			title="Formulario de servicios"
+			{components}
+			submitMessage="Editar servicio"
+			{loading}
+			on:custom-submit={serviceSubmit}
+		/>
 	</div>
 </main>
