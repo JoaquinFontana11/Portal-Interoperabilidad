@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
+		"host": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
@@ -12,9 +13,11 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@carbon/charts-svelte": "^1.6.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.13",
+		"d3": "^7.6.1",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",

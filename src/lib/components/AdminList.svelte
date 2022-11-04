@@ -11,7 +11,7 @@
 	const distpach = createEventDispatcher();
 
 	const deleteEvent = (e: CustomEvent) => {
-		distpach('delete-doc', { id: e.detail.id });
+		distpach('delete-doc', { id: e.detail.id, doc: e.detail.doc });
 	};
 	const modifyEvent = (e: CustomEvent) => {
 		distpach('modify-doc', { id: e.detail.id, doc: e.detail.doc });
@@ -20,7 +20,7 @@
 
 <table class="text-sm text-left text-gray-500 dark:text-gray-400 shadow-md ml-auto mr-auto">
 	<caption
-		class="mb-2 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 "
+		class="mb-2 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 dark:text-gray-400 w-auto"
 	>
 		{caption}
 	</caption>

@@ -19,7 +19,6 @@
 	export let loading: boolean;
 
 	const handlerSubmit = async (e: Event) => {
-		console.log(components);
 		dispatch('custom-submit', {
 			data: components.map((component) => {
 				return { input: component.name, value: component.value };
