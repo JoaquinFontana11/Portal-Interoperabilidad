@@ -1,4 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p class="bg-rose-100">
-	Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-</p>
+<script lang="ts">
+</script>
+
+<div class="h-128 w-fu bg-cover bg-center bg-hero-pattern" />

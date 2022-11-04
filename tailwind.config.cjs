@@ -10,6 +10,10 @@ module.exports = {
 			},
 			spacing: {
 				128: '32rem'
+			},
+			backgroundImage: {
+				'hero-pattern':
+					"linear-gradient(145deg, rgba(255, 65, 88, 0.1) 0%, rgba(202, 231, 234, 1) 100%), url('/img/banner.jpg')"
 			}
 		}
 	},
