@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { Document, Table, VideoCamera, PresentationChartBar, Icon } from 'svelte-hero-icons';
+	import AdminMessage from '../AdminMessage.svelte';
 	export let name: string;
 	export let url: string;
 
-	let extension: string = name.split('.').at(-1);
+	let extension: string = name.split('.').at(-1) as string;
+	let showMessage = false;
 
 	const iconAndColor: any = {
 		pdf: [Document, 'border-rose-300 hover:border-rose-500'],
@@ -36,8 +38,32 @@
 			behavior: 'smooth'
 		});
 	};
+
+	const handlerClick = async (e: Event) => {
+		// agregamos esto pq el clipboard solo funciona en paginas HTTPS
+		if (navigator.clipboard) {
+			navigator.clipboard.writeText(url);
+		} else {
+			let textArea = document.createElement('textarea');
+			textArea.value = url;
+			textArea.classList.add('fuera');
+			document.body.appendChild(textArea);
+			textArea.focus();
+			textArea.select();
+			document.execCommand('copy');
+			textArea.remove();
+		}
+
+		showMessage = true;
+		setTimeout(() => {
+			showMessage = false;
+		}, 2000);
+	};
 </script>
 
+{#if showMessage}
+	<AdminMessage type="success" message="La imagen se copio con exito!" />
+{/if}
 <div
 	class={`border-2 ${
 		iconAndColor[extension] ? iconAndColor[extension][1] : 'border-gray-300 hover:border-gray-300'
@@ -49,6 +75,7 @@
 	<a
 		href="#"
 		class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+		on:click={handlerClick}
 	>
 		<Icon
 			src={iconAndColor[extension] ? iconAndColor[extension][0] : Document}
