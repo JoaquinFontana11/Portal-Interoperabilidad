@@ -5,6 +5,20 @@
 	let dragEnter = false;
 	let filename = '';
 
+	const inputStyleSucces = " flex flex-col justify-center items-center w-full h-64 rounded-lg border-2  border-dashed cursor-pointer bg-green-50 border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-green-500"
+	const inputStyleError = " flex flex-col justify-center items-center w-full h-64 rounded-lg border-2  border-dashed cursor-pointer bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500"
+
+	const messageStyleSucces = "block text-green-600 dark:text-green-500 mb-2 text-sm font-medium"
+	const messageStyleError = "block text-red-600 dark:text-red-500 mb-2 text-sm font-medium"
+
+	let styleInput = `flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 ${
+			dragEnter ? 'border-indigo-600' : 'border-gray-300'
+		} border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600`
+	let styleMessage = "hidden"
+	let errorMsg = ""
+
+	const errorTypes = [".zip",".rar",".exe",".iso"]
+
 	const dropHandler = (e: any) => {
 		if (e.dataTransfer.items) {
 			// Use DataTransferItemList interface to access the file(s)
@@ -24,10 +38,38 @@
 		dragEnter = false;
 	};
 
+
+
+	const validateInput  = (e: Event) => {
+		let error = false;
+		[...files].forEach((file,i) => {
+			if(!error && errorTypes.some(str => file.name.endsWith(str))) {
+				error = true
+			}
+		})
+		if(!files) {
+			styleInput = inputStyleError;
+			styleMessage = messageStyleError
+			errorMsg = "Debe completar este campo"
+		}else{
+			if (error) {
+				styleInput = inputStyleError;
+				styleMessage = messageStyleError
+				errorMsg = "No se admiten archivos con esa extension"
+			}else {
+			styleInput = inputStyleSucces;
+			styleMessage = messageStyleSucces
+			errorMsg = "Correcto!"
+			}
+		};
+
+	}
+
 	const uploadHandler = (e: Event) => {
 		[...files].forEach((file, i) => {
 			filename = file.name;
 		});
+		validateInput(e)
 	};
 </script>
 
@@ -37,9 +79,7 @@
 	</p>
 	<label
 		for="dropzone-file"
-		class={`flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 ${
-			dragEnter ? 'border-indigo-600' : 'border-gray-300'
-		} border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600`}
+		class={styleInput}
 		on:drop|preventDefault|stopPropagation={dropHandler}
 		on:dragenter|preventDefault|stopPropagation={() => (dragEnter = true)}
 		on:dragover|preventDefault|stopPropagation={() => (dragEnter = true)}
@@ -73,4 +113,6 @@
 			on:change|preventDefault={uploadHandler}
 		/>
 	</label>
+	<label class={styleMessage} for={label}
+	>{errorMsg}</label>
 </div>

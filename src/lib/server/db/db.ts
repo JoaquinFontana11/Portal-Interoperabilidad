@@ -10,6 +10,7 @@ import GraphModel from './models/GraphModel';
 dotenv.config();
 
 let urlDB: string;
+console.log(process.env.DB)
 if (process.env.DB) {
 	urlDB = process.env.DB;
 
