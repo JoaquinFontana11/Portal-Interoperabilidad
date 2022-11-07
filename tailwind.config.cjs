@@ -13,7 +13,7 @@ module.exports = {
 			},
 			backgroundImage: {
 				'hero-pattern':
-					"linear-gradient(145deg, rgba(255, 65, 88, 0.1) 0%, rgba(202, 231, 234, 1) 100%), url('/img/banner.jpg')"
+					"linear-gradient(145deg, rgba(255, 65, 88, 0.3) 0%, rgba(202, 231, 234, 1) 100%), url('/img/banner.jpg')"
 			}
 		}
 	},
