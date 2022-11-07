@@ -26,5 +26,5 @@
 			{/each}
 		</div>
 	</div>
-	<hr class="my-6 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" />
+	<!-- <hr class="my-6 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" /> -->
 </footer>

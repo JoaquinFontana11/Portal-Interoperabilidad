@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { Plus, Table } from 'svelte-hero-icons';
+	import type { PageData } from './$types';
 	import type { IComponent } from '$lib/types/Components';
+	import { Plus, Table } from 'svelte-hero-icons';
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
 
-	export let data: any;
+	export let data: PageData;
 	let list = true;
 	let loading = false;
 

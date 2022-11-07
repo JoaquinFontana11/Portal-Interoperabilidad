@@ -18,22 +18,22 @@
 			submenus: [
 				{
 					name: 'Acerca de este proyecto',
-					slug: '/info/acerca-del-proyecto',
+					slug: '/pages/informacion/acerca-del-proyecto',
 					description: 'Informacion sobre quienes somos y que hacemos'
 				},
 				{
 					name: 'Estadisticas',
-					slug: '/estadisticas',
+					slug: '/pages/informacion/estadisticas',
 					description: 'Todas las estadisticas de uso de nuestros servicios'
 				},
 				{
 					name: 'Normativa',
-					slug: '/normativa',
+					slug: '/pages/informacion/normativa',
 					description: 'Informacion sobre las normativas con la que trabajamos'
 				},
 				{
 					name: 'Recursos',
-					slug: '/recursos',
+					slug: '/pages/informacion/recursos',
 					description: 'Descarga todos los archivos necesarios para trabajar con nosotros'
 				}
 			]
@@ -44,19 +44,19 @@
 			submenus: [
 				{
 					name: 'Servicios',
-					slug: '/catalogo/servicios',
+					slug: '/pages/catalogo/servicios',
 					description: 'Mira todos los servicios que ofrecemos!'
 				},
 				{
 					name: 'Novedades',
-					slug: '/catalogo/novedades',
+					slug: '/pages/catalogo/novedades',
 					description: 'Enterate de las ultimas novedades'
 				}
 			]
 		},
 		{
 			name: 'Contacto',
-			slug: '/contacto'
+			slug: '/pages/contacto'
 		}
 	];
 
