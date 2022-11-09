@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Icon, Chip, LightningBolt, Home, PresentationChartBar, Beaker } from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
-	import FancyList from '$lib/components/portal/FancyList.svelte';
+	// import FancyList from '$lib/components/portal/FancyList.svelte';
+	import Timeline from '$lib/components/portal/Timeline.svelte';
 
 	const objetivos = [
 		{
@@ -22,57 +23,80 @@
 		}
 	];
 
-	const ejes = [
-		{
-			title: 'Interoperabilidad Semantica',
-			content:
-				'Asegurar que el significado de la información intercambiada sea interpretada de forma precisa, inteligible y sin ambigüedades',
-			image: '/img/banner.jpg'
-		},
-		{
-			title: 'Interoperabilidad Juridica',
-			content:
-				'Definir los lineamientos legales de los intercambios de información entre los sujetos comprendidos, asegurando el cumplimiento de la normativa vigente y garantizando los principios, derechos y obligaciones de las partes involucradas',
-			image: '/img/banner.jpg'
-		},
-		{
-			title: 'Interoperabilidad Tecnica',
-			content:
-				'Permitir el intercambio de información entre los sistemas de los sujetos comprendidos en la interoperabilidad, asegurando las exigencias de calidad, seguridad y nivel de servicio. Incluye aspectos claves como interfaces abiertas, servicios de interconexión, software de integración de datos, accesibilidad y seguridad de servicios',
-			image: '/img/banner.jpg'
-		},
-		{
-			title: 'Interoperabilidad Organizacional',
-			content:
-				'Brindar el soporte necesario, a través del portal web de Interoperabilidad, que posibilite a los Organismos Productores y Consumidores gestionar los servicios disponibles',
-			image: '/img/banner.jpg'
-		}
-	];
+	// const ejes = [
+	// 	{
+	// 		title: 'Interoperabilidad Semantica',
+	// 		content:
+	// 			'Asegurar que el significado de la información intercambiada sea interpretada de forma precisa, inteligible y sin ambigüedades',
+	// 		image: '/img/banner.jpg'
+	// 	},
+	// 	{
+	// 		title: 'Interoperabilidad Juridica',
+	// 		content:
+	// 			'Definir los lineamientos legales de los intercambios de información entre los sujetos comprendidos, asegurando el cumplimiento de la normativa vigente y garantizando los principios, derechos y obligaciones de las partes involucradas',
+	// 		image: '/img/banner.jpg'
+	// 	},
+	// 	{
+	// 		title: 'Interoperabilidad Tecnica',
+	// 		content:
+	// 			'Permitir el intercambio de información entre los sistemas de los sujetos comprendidos en la interoperabilidad, asegurando las exigencias de calidad, seguridad y nivel de servicio. Incluye aspectos claves como interfaces abiertas, servicios de interconexión, software de integración de datos, accesibilidad y seguridad de servicios',
+	// 		image: '/img/banner.jpg'
+	// 	},
+	// 	{
+	// 		title: 'Interoperabilidad Organizacional',
+	// 		content:
+	// 			'Brindar el soporte necesario, a través del portal web de Interoperabilidad, que posibilite a los Organismos Productores y Consumidores gestionar los servicios disponibles',
+	// 		image: '/img/banner.jpg'
+	// 	}
+	// ];
 
-	const proyectos = [
+	// const proyectos = [
+	// 	{
+	// 		name: 'Titulo de proyecto 1',
+	// 		content: 'Descripcion breve del proyecto 1',
+	// 		icon: Beaker,
+	// 		colorIcon: 'bg-[#2EBDF855]'
+	// 	},
+	// 	{
+	// 		name: 'Titulo de proyecto 2',
+	// 		content: 'Descripcion breve del proyecto 2',
+	// 		icon: Beaker,
+	// 		colorIcon: 'bg-[#2EBDF855]'
+	// 	},
+	// 	{
+	// 		name: 'Titulo de proyecto 2',
+	// 		content: 'Descripcion breve del proyecto 2',
+	// 		icon: Beaker,
+	// 		colorIcon: 'bg-[#2EBDF855]'
+	// 	},
+	// 	{
+	// 		name: 'Titulo de proyecto 2',
+	// 		content: 'Descripcion breve del proyecto 2',
+	// 		icon: Beaker,
+	// 		colorIcon: 'bg-[#2EBDF855]'
+	// 	}
+	// ];
+
+	const timeline = [
 		{
-			name: 'Titulo de proyecto 1',
-			content: 'Descripcion breve del proyecto 1',
-			icon: Beaker,
-			colorIcon: 'bg-[#2EBDF855]'
+			name: 'hito 1',
+			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
 		},
 		{
-			name: 'Titulo de proyecto 2',
-			content: 'Descripcion breve del proyecto 2',
-			icon: Beaker,
-			colorIcon: 'bg-[#2EBDF855]'
+			name: 'hito 2',
+			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
 		},
 		{
-			name: 'Titulo de proyecto 2',
-			content: 'Descripcion breve del proyecto 2',
-			icon: Beaker,
-			colorIcon: 'bg-[#2EBDF855]'
+			name: 'hito 3',
+			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
 		},
 		{
-			name: 'Titulo de proyecto 2',
-			content: 'Descripcion breve del proyecto 2',
-			icon: Beaker,
-			colorIcon: 'bg-[#2EBDF855]'
+			name: 'hito 4',
+			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+		},
+		{
+			name: 'hito 5',
+			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
 		}
 	];
 </script>
@@ -101,14 +125,17 @@
 			>
 				<Icon
 					src={objetivo.icon}
-					class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+					class="w-10 h-10 text-sky-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 				/>
 				<p class="font-normal text-gray-700 dark:text-gray-400 text-center">{objetivo.content}</p>
 			</div>
 		{/each}
 	</div>
 </Section>
-<Section
+<Section title="Nuestro recorrido" overview="Conoce un poco mas sobre nosotros" direction="left">
+	<Timeline info={timeline} />
+</Section>
+<!-- <Section
 	title="Ejes de Interoperabilidad"
 	overview="Conoce un poco mas sobre nosotros"
 	direction="left"
@@ -135,4 +162,4 @@
 			</div>
 		{/each}
 	</div>
-</Section>
+</Section> -->
