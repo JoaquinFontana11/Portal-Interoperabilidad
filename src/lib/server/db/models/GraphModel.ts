@@ -19,7 +19,7 @@ const graphSchema = new Schema<IGraph>({
 	type: {
 		type: String,
 		default: 'pie',
-		enum: ['pie', 'bar']
+		enum: ['pie', 'bar', 'bar-floating']
 	},
 	data: [
 		{

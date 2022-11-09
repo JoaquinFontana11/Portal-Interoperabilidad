@@ -4,10 +4,10 @@
 	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
-	import AdminButton from '$lib/components/AdminButton.svelte';
+	// import AdminButton from '$lib/components/AdminButton.svelte';
 
 	export let data: PageData;
-	let list = true;
+	// let list = true;
 	let loading = false;
 
 	const components: IComponent[] = [
@@ -78,24 +78,25 @@
 	};
 </script>
 
-<AdminButton
+<!-- <AdminButton
 	icon={list ? Plus : Table}
 	on:click={() => {
 		list = !list;
 	}}
-/>
+/> -->
 <main class="ml-56 dark:bg-gray-900 bg-gray-100 h-screen relative overflow-y-scroll">
 	<div class="w-3/4 h-3/4 absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
-		{#if list}
-			<AdminList
-				headers={['titulo', 'tipo']}
-				attributes={['title', 'type']}
-				data={JSON.parse(data.graphs)}
-				on:delete-doc={deleteGraph}
-				on:modify-doc={modifyGraph}
-				caption="Servicios"
-			/>
-		{:else}
+		<!-- {#if list} -->
+		<AdminList
+			headers={['titulo', 'tipo']}
+			attributes={['title', 'type']}
+			data={JSON.parse(data.graphs)}
+			on:delete-doc={deleteGraph}
+			on:modify-doc={modifyGraph}
+			caption="Graficos"
+			actions={['edit']}
+		/>
+		<!-- {:else}
 			<AdminForm
 				title="Formulario de graficos"
 				{components}
@@ -103,6 +104,6 @@
 				{loading}
 				on:custom-submit={graphSubmit}
 			/>
-		{/if}
+		{/if} -->
 	</div>
 </main>

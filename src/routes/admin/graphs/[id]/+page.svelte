@@ -24,7 +24,8 @@
 			required: true,
 			options: [
 				{ value: 'pie', name: 'torta' },
-				{ value: 'bar', name: 'barras' }
+				{ value: 'bar', name: 'barras' },
+				{ value: 'bar-floating', name: 'barras flotantes' }
 			]
 		}
 	];

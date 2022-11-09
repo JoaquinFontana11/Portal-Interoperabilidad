@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon, Chip, LightningBolt, Home, PresentationChartBar } from 'svelte-hero-icons';
+	import { Icon, Chip, LightningBolt, Home, PresentationChartBar, Beaker } from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
 	import FancyList from '$lib/components/portal/FancyList.svelte';
 
@@ -53,26 +53,26 @@
 		{
 			name: 'Titulo de proyecto 1',
 			content: 'Descripcion breve del proyecto 1',
-			icon: LightningBolt,
-			colorIcon: 'bg-[#ff990055]'
+			icon: Beaker,
+			colorIcon: 'bg-[#2EBDF855]'
 		},
 		{
 			name: 'Titulo de proyecto 2',
 			content: 'Descripcion breve del proyecto 2',
-			icon: LightningBolt,
-			colorIcon: 'bg-[#ff550055]'
+			icon: Beaker,
+			colorIcon: 'bg-[#2EBDF855]'
 		},
 		{
 			name: 'Titulo de proyecto 2',
 			content: 'Descripcion breve del proyecto 2',
-			icon: LightningBolt,
-			colorIcon: 'bg-[#ff220055]'
+			icon: Beaker,
+			colorIcon: 'bg-[#2EBDF855]'
 		},
 		{
 			name: 'Titulo de proyecto 2',
 			content: 'Descripcion breve del proyecto 2',
-			icon: LightningBolt,
-			colorIcon: 'bg-[#11550055]'
+			icon: Beaker,
+			colorIcon: 'bg-[#2EBDF855]'
 		}
 	];
 </script>

@@ -101,6 +101,24 @@
 					toolbar: { enabled: false }
 				}}
 			/>
+		{:else if graph.type == 'bar-floating'}
+			<BarChartSimple
+				data={graph.data.map((data) => {
+					return {
+						group: data.name,
+						value: data.value
+					};
+				})}
+				options={{
+					title: graph.title,
+					height: '400px',
+					toolbar: { enabled: false },
+					axes: {
+						bottom: { mapsTo: 'value' },
+						left: { mapsTo: 'group', scaleType: 'labels' }
+					}
+				}}
+			/>
 		{:else}
 			<BarChartSimple
 				data={graph.data.map((data) => {
