@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { Icon, Chip, LightningBolt, Home, PresentationChartBar, Beaker } from 'svelte-hero-icons';
+	import type { PageData } from './$types';
+	import { Icon, Chip, LightningBolt, Home, PresentationChartBar } from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
 	// import FancyList from '$lib/components/portal/FancyList.svelte';
 	import Timeline from '$lib/components/portal/Timeline.svelte';
+
+	export let data: PageData;
 
 	const objetivos = [
 		{
@@ -79,24 +82,36 @@
 
 	const timeline = [
 		{
-			name: 'hito 1',
-			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+			name: 'Presentacion del proyecto',
+			description: 'Se presenta la propuesta del proceso de interoperabilidad',
+			date: new Date(),
+			image: '/img/timeline-presentacion.jpg'
 		},
 		{
-			name: 'hito 2',
-			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+			name: 'Aprobacion del proyecto',
+			description: 'Comienzan a operar los servicios de interoperabilidad',
+			date: new Date(),
+			image: '/img/timeline-aprobacion.jpg'
 		},
 		{
-			name: 'hito 3',
-			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+			name: 'Ampliacion de servicios',
+			description: 'Aumentamos el alcance del proyect con nuevos servicios',
+			date: new Date(),
+			image: '/img/timeline-ampliacion.jpg'
 		},
 		{
-			name: 'hito 4',
-			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+			name: 'Migracion de servicios',
+			description:
+				'Se realizo una migracion de los servicios para aumentar al eficiencia y la escalabilidad de los mismos',
+			date: new Date(),
+			image: '/img/timeline-migracion.jpg'
 		},
 		{
-			name: 'hito 5',
-			description: 'lorem ipsum balbalbalbalbalbalbalblabalbalbalbal'
+			name: 'Actualidad',
+			description:
+				'Actualmante el proyecto de interoperabilidad seencuentra trabajando con X organismos',
+			date: new Date(),
+			graph: JSON.parse(data.graphs).find((graph) => graph.type == 'pie')
 		}
 	];
 </script>
@@ -132,7 +147,7 @@
 		{/each}
 	</div>
 </Section>
-<Section title="Nuestro recorrido" overview="Conoce un poco mas sobre nosotros" direction="left">
+<Section title="Nuestro recorrido" overview="Conoce un poco mas sobre nosotros" direction="center">
 	<Timeline info={timeline} />
 </Section>
 <!-- <Section
