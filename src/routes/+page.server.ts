@@ -1,7 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { getAllGraph } from '$lib/server/db/db';
+import { getAllGraph, getAllNovelty } from '$lib/server/db/db';
 
 export const load: PageServerLoad = async () => {
 	const graphs = await getAllGraph();
-	return { graphs: JSON.stringify(graphs) };
+	const noveltys = await getAllNovelty();
+	return { graphs: JSON.stringify(graphs), noveltys: JSON.stringify(noveltys) };
 };

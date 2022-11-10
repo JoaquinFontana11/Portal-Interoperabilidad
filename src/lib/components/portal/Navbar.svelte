@@ -4,9 +4,21 @@
 
 	export let menus: any;
 	let responsiveNavDrop = true;
+
+	const closeSubmenus = (e: Event) => {
+		if (e.clientY < 100) return;
+		menus = menus.map((menu) => {
+			menu.drop = false;
+			return menu;
+		});
+	};
 </script>
 
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 shadow-xl">
+<svelte:window on:click={closeSubmenus} />
+<nav
+	class={`bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 shadow-xl `}
+	style="z-index: 9999;"
+>
 	<div class="container flex flex-wrap justify-between items-center ">
 		<a href="/" class="flex items-center">
 			<img src="/img/PBA.png" class="mr-3 h-20" alt="PBA logo" />
@@ -76,6 +88,7 @@
 									<div
 										id="mega-menu-full-dropdown"
 										class="mt-1  bg-gray-50 border-gray-200 shadow-sm md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 absolute top-12 left-1/2 transform -translate-x-1/2"
+										style="z-index: 9999;"
 										transition:fly={{
 											duration: 300,
 											x: 0,
@@ -95,7 +108,7 @@
 																href={submenu.slug}
 																class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
 															>
-																<div class="font-semibold">{submenu.name}</div>
+																<p class="font-semibold text-sm text-gray-700">{submenu.name}</p>
 																<span class="text-sm font-light text-gray-500 dark:text-gray-400"
 																	>{submenu.description}</span
 																>
@@ -115,7 +128,7 @@
 																href={submenu.slug}
 																class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
 															>
-																<div class="font-semibold">{submenu.name}</div>
+																<p class="font-semibold text-sm text-gray-700">{submenu.name}</p>
 																<span class="text-sm font-light text-gray-500 dark:text-gray-400"
 																	>{submenu.description}</span
 																>
@@ -130,7 +143,7 @@
 																href={submenu.href}
 																class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
 															>
-																<div class="font-semibold">{submenu.name}</div>
+																<p class="font-semibold text-sm text-gray-700">{submenu.name}</p>
 																<span class="text-sm font-light text-gray-500 dark:text-gray-400"
 																	>{submenu.description}</span
 																>

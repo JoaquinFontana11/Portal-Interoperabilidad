@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '@carbon/styles/css/styles.css';
 	import '@carbon/charts/styles.css';
+	import { blur, slide } from 'svelte/transition';
 	import { lazyLoad } from './lazyLoad.js';
 	import { DonutChart } from '@carbon/charts-svelte';
 	export let info: any;
@@ -92,7 +93,11 @@
 						{hito.name}
 					</h3>
 					{#if current == i}
-						<p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 w-[500px]">
+						<p
+							class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 w-[500px]"
+							in:blur={{ duration: 500 }}
+							out:slide={{ duration: 500 }}
+						>
 							{hito.description}
 						</p>
 					{/if}

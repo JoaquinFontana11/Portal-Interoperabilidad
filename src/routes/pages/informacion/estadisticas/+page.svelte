@@ -5,6 +5,13 @@
 	export let data: PageData;
 </script>
 
-<Section title="Estadisticas de uso" titleColor="text-cyan-500">
+<div class="h-10" />
+<Section
+	title="Estadisticas de uso"
+	config={{
+		titleColor: 'text-sky-400',
+		backgroundColor: 'bg-white'
+	}}
+>
 	<Statistic graphs={JSON.parse(data.graphs)} />
 </Section>

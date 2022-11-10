@@ -4,6 +4,7 @@
 	import Section from '$lib/components/portal/Section.svelte';
 	// import FancyList from '$lib/components/portal/FancyList.svelte';
 	import Timeline from '$lib/components/portal/Timeline.svelte';
+	import Noveltys from '$lib/components/portal/Noveltys.svelte';
 
 	export let data: PageData;
 
@@ -25,60 +26,6 @@
 			icon: PresentationChartBar
 		}
 	];
-
-	// const ejes = [
-	// 	{
-	// 		title: 'Interoperabilidad Semantica',
-	// 		content:
-	// 			'Asegurar que el significado de la información intercambiada sea interpretada de forma precisa, inteligible y sin ambigüedades',
-	// 		image: '/img/banner.jpg'
-	// 	},
-	// 	{
-	// 		title: 'Interoperabilidad Juridica',
-	// 		content:
-	// 			'Definir los lineamientos legales de los intercambios de información entre los sujetos comprendidos, asegurando el cumplimiento de la normativa vigente y garantizando los principios, derechos y obligaciones de las partes involucradas',
-	// 		image: '/img/banner.jpg'
-	// 	},
-	// 	{
-	// 		title: 'Interoperabilidad Tecnica',
-	// 		content:
-	// 			'Permitir el intercambio de información entre los sistemas de los sujetos comprendidos en la interoperabilidad, asegurando las exigencias de calidad, seguridad y nivel de servicio. Incluye aspectos claves como interfaces abiertas, servicios de interconexión, software de integración de datos, accesibilidad y seguridad de servicios',
-	// 		image: '/img/banner.jpg'
-	// 	},
-	// 	{
-	// 		title: 'Interoperabilidad Organizacional',
-	// 		content:
-	// 			'Brindar el soporte necesario, a través del portal web de Interoperabilidad, que posibilite a los Organismos Productores y Consumidores gestionar los servicios disponibles',
-	// 		image: '/img/banner.jpg'
-	// 	}
-	// ];
-
-	// const proyectos = [
-	// 	{
-	// 		name: 'Titulo de proyecto 1',
-	// 		content: 'Descripcion breve del proyecto 1',
-	// 		icon: Beaker,
-	// 		colorIcon: 'bg-[#2EBDF855]'
-	// 	},
-	// 	{
-	// 		name: 'Titulo de proyecto 2',
-	// 		content: 'Descripcion breve del proyecto 2',
-	// 		icon: Beaker,
-	// 		colorIcon: 'bg-[#2EBDF855]'
-	// 	},
-	// 	{
-	// 		name: 'Titulo de proyecto 2',
-	// 		content: 'Descripcion breve del proyecto 2',
-	// 		icon: Beaker,
-	// 		colorIcon: 'bg-[#2EBDF855]'
-	// 	},
-	// 	{
-	// 		name: 'Titulo de proyecto 2',
-	// 		content: 'Descripcion breve del proyecto 2',
-	// 		icon: Beaker,
-	// 		colorIcon: 'bg-[#2EBDF855]'
-	// 	}
-	// ];
 
 	const timeline = [
 		{
@@ -111,7 +58,7 @@
 			description:
 				'Actualmante el proyecto de interoperabilidad seencuentra trabajando con X organismos',
 			date: new Date(),
-			graph: JSON.parse(data.graphs).find((graph) => graph.type == 'pie')
+			graph: JSON.parse(data.graphs).find((graph: any) => graph.type == 'pie')
 		}
 	];
 </script>
@@ -119,7 +66,14 @@
 <div class="h-128 w-fu bg-cover bg-center bg-hero-pattern flex items-center justify-center">
 	<img src="/img/IOP.png" class="h-56" alt="logo interoperabilidad" />
 </div>
-<Section title="Objetivos/Beneficios" overview="¿Que es IOP?">
+<Section
+	title="Objetivos/Beneficios"
+	overview="¿Que es IOP?"
+	config={{
+		titleColor: 'text-gray-900',
+		backgroundColor: 'bg-slate-50'
+	}}
+>
 	<p
 		class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center"
 	>
@@ -149,32 +103,51 @@
 </Section>
 <Section title="Nuestro recorrido" overview="Conoce un poco mas sobre nosotros" direction="center">
 	<Timeline info={timeline} />
+	<a
+		href="/pages/informacion/acerca-del-proyecto"
+		class="inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-1 duration-75"
+	>
+		Saber mas acerca de nosotros
+		<svg
+			aria-hidden="true"
+			class="ml-1 w-5 h-5"
+			fill="currentColor"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+			><path
+				fill-rule="evenodd"
+				d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+				clip-rule="evenodd"
+			/></svg
+		>
+	</a>
 </Section>
-<!-- <Section
-	title="Ejes de Interoperabilidad"
-	overview="Conoce un poco mas sobre nosotros"
-	direction="left"
+<Section
+	title="Ultimas novedades"
+	overview="Las ultimas noticias sobre el proyecto de Interoperabilidad"
+	direction="center"
+	config={{
+		titleColor: 'text-gray-900',
+		backgroundColor: 'bg-slate-50'
+	}}
 >
-	<FancyList items={ejes} />
+	<Noveltys noveltys={JSON.parse(data.noveltys)} />
+	<a
+		href="/pages/catalogo/novedades"
+		class="inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
+	>
+		Ver mas novedades
+		<svg
+			aria-hidden="true"
+			class="ml-1 w-5 h-5"
+			fill="currentColor"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+			><path
+				fill-rule="evenodd"
+				d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+				clip-rule="evenodd"
+			/></svg
+		>
+	</a>
 </Section>
-
-<Section title="Proyectos" overview="Conoce un poco mas sobre nuestros proyectos" direction="left">
-	<div class="flex gap-10 justify-center">
-		{#each proyectos as proyecto}
-			<div
-				class="flex flex-col gap-5 items-center w-[400px] max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 overflow-hidden "
-			>
-				<div class={`${proyecto.colorIcon} w-full p-2 flex justify-center items-center`}>
-					<Icon
-						src={proyecto.icon}
-						class="w-14 h-14 text-gray-700 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-					/>
-				</div>
-				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-					{proyecto.name}
-				</h5>
-				<p class="font-normal text-gray-700 dark:text-gray-400 pb-4">{proyecto.content}</p>
-			</div>
-		{/each}
-	</div>
-</Section> -->

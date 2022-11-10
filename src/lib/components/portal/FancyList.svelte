@@ -6,12 +6,10 @@
 	interface Iitem {
 		title: string;
 		content: string;
-		image: string;
 	}
 
 	export let items: Array<Iitem>;
 
-	let imageSelected = items[0].image;
 	let itemSelecteds = [true, false, false, false];
 	let itemSelected = 0;
 	let itemHover: number | null = null;
@@ -40,8 +38,8 @@
 			>
 				<p
 					class={`flex gap-2 items-center font-semibold  dark:text-white ${
-						itemSelecteds[i] ? 'text-gray-700' : 'text-gray-400'
-					}`}
+						itemSelecteds[i] ? 'text-gray-500' : 'text-gray-400'
+					} mb-3 text-lg font-medium`}
 				>
 					{#if itemSelecteds[i]}
 						<Icon
@@ -55,12 +53,11 @@
 				</p>
 				{#if itemSelecteds[i]}
 					<span
-						class="font-light text-gray-500 dark:text-gray-400"
+						class=" text-gray-500 dark:text-gray-400 font-medium"
 						in:slide={{ duration: 500, easing: quintOut }}>{item.content}</span
 					>
 				{/if}
 			</li>
 		{/each}
 	</ul>
-	<img src={imageSelected} class="rounded-lg shadow-xl h-96 w-auto" />
 </div>
