@@ -12,7 +12,7 @@
 
 	const components: IComponent[] = [
 		{
-			type: 'file',
+			type: 'image',
 			label: 'Imagen a agregar',
 			name: 'image',
 			value: '',

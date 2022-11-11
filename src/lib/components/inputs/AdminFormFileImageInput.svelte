@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { validateInputFile } from "./validators";
+	import { validateInputFileImage } from "./validators";
 
 
 	export let files: FileList;
@@ -47,7 +47,7 @@
 
 	const validateInput  = (e: Event) => {
 
-		({message: errorMsg,inputStyle: styleInput,messageStyle: styleMessage} = validateInputFile(files,error,succes))
+		({message: errorMsg,inputStyle: styleInput,messageStyle: styleMessage} = validateInputFileImage(files,error,succes))
 
 	}
 

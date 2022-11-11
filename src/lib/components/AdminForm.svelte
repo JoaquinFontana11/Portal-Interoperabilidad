@@ -8,6 +8,7 @@
 	import AdminFormInputDate from './inputs/AdminFormInputDate.svelte';
 	import AdminFormSelect from './inputs/AdminFormSelect.svelte';
 	import AdminFormFileInput from './inputs/AdminFormFileInput.svelte';
+	import AdminFormFileImageInput from "./inputs/AdminFormFileImageInput.svelte"
 	import AdminFormEditor from './inputs/AdminFormEditor.svelte';
 	import Spinner from '$lib/components/Spinner.svelte';
 
@@ -24,6 +25,7 @@
 				return { input: component.name, value: component.value };
 			})
 		});
+		console.log("Ey tamo Devuelta")
 	};
 </script>
 
@@ -68,6 +70,8 @@
 			/>
 		{:else if component.type == 'file'}
 			<AdminFormFileInput label={component.label} bind:files={component.value} />
+		{:else if component.type == 'image'}
+			<AdminFormFileImageInput label={component.label} bind:files={component.value} />
 		{:else if component.type == 'editor'}
 			<AdminFormEditor label={component.label} bind:value={component.value} />
 		{/if}
