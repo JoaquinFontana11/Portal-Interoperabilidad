@@ -2,7 +2,6 @@
 	import type { PageData } from './$types';
 	import { Icon, Chip, LightningBolt, Home, PresentationChartBar } from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
-	// import FancyList from '$lib/components/portal/FancyList.svelte';
 	import Timeline from '$lib/components/portal/Timeline.svelte';
 	import Noveltys from '$lib/components/portal/Noveltys.svelte';
 

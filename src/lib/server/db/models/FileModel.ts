@@ -4,6 +4,7 @@ interface IFile {
 	name: string;
 	type: string;
 	url: string;
+	size: number;
 	order: number;
 	date: Date;
 }
@@ -21,6 +22,10 @@ const fileSchema = new Schema<IFile>({
 	url: {
 		type: String,
 		required: [true, 'Un archivo tiene que tener una url']
+	},
+	size: {
+		type: Number,
+		default: 0
 	},
 	order: { type: Number, default: 99 },
 	date: {

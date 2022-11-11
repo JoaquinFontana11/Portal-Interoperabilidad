@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { writeFileSync } from 'fs';
+import { writeFileSync, statSync } from 'fs';
 import { createFile } from '$lib/server/db/db';
 import * as dotenv from 'dotenv';
 
@@ -15,8 +15,10 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	writeFileSync(`static${path}`, file, 'base64');
 
+	const stats = statSync(`static${path}`);
+
 	try {
-		const newFile = await createFile({ name: data.name, type, url: path });
+		const newFile = await createFile({ name: data.name, type, url: path, size: stats.size });
 		return json({
 			status: '201',
 			newFile

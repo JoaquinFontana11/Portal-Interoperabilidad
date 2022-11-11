@@ -16,6 +16,13 @@
 			required: true
 		},
 		{
+			type: 'text',
+			label: 'Resumen de la novedad',
+			name: 'summary',
+			value: novelty.summary,
+			required: true
+		},
+		{
 			type: 'editor',
 			label: 'Contenido de la novedad',
 			name: 'body',
@@ -46,8 +53,9 @@
 		const { data } = e.detail;
 		const body = {
 			title: data[0].value,
-			body: data[1].value,
-			image: data[2].value,
+			summary: data[1].value,
+			body: data[2].value,
+			image: data[3].value,
 			slug:
 				'/novedades/' +
 				data[0].value
@@ -56,7 +64,7 @@
 					.replace(/ /g, '-')
 					.replace(/^(-)/g, '')
 					.replace(/(-)$/g, ''),
-			date: data[3].value
+			date: data[4].value
 		};
 
 		try {

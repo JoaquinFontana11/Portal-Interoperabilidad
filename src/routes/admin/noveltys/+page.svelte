@@ -20,6 +20,13 @@
 			required: true
 		},
 		{
+			type: 'text',
+			label: 'Resumen de la novedad',
+			name: 'summary',
+			value: '',
+			required: true
+		},
+		{
 			type: 'editor',
 			label: 'Contenido de la novedad',
 			name: 'body',
@@ -48,8 +55,9 @@
 		const { data } = e.detail;
 		const body = {
 			title: data[0].value,
-			body: data[1].value,
-			image: data[2].value,
+			summary: data[1].value,
+			body: data[2].value,
+			image: data[3].value,
 			slug:
 				'/novedades/' +
 				data[0].value
@@ -58,7 +66,7 @@
 					.replace(/ /g, '-')
 					.replace(/^(-)/g, '')
 					.replace(/(-)$/g, ''),
-			date: new Date(data[3].value).setDate(new Date(data[3].value).getDate() + 1)
+			date: new Date(data[4].value).setDate(new Date(data[4].value).getDate() + 1)
 		};
 
 		try {
@@ -108,8 +116,8 @@
 	<div class="w-3/4 h-3/4 absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
 		{#if list}
 			<AdminList
-				headers={['titulo', 'slug', 'imagen', 'fecha']}
-				attributes={['title', 'slug', 'image', 'date']}
+				headers={['titulo', 'resumen', 'slug', 'imagen', 'fecha']}
+				attributes={['title', 'summary', 'slug', 'image', 'date']}
 				data={JSON.parse(data.noveltys)}
 				on:delete-doc={deleteNovelty}
 				on:modify-doc={modifyNovelty}
