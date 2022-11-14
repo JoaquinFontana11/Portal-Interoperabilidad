@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-[600px] w-[700px]"
+	class=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-[600px] w-[700px] hover:transform hover:-translate-y-1 duration-75"
 >
 	<a href={slug}>
 		<img class="rounded-t-lg h-[400px]" src={image} alt="" />

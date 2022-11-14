@@ -29,7 +29,7 @@
 				class="col-span-2 row-span-2 place-self-center"
 				in:send={{ key: novelty._id }}
 				out:receive={{ key: novelty._id }}
-				animate:flip={{ duration: 400 }}
+				animate:flip={{ duration: 600 }}
 				on:mouseenter={() => {
 					hover = true;
 				}}
@@ -50,7 +50,7 @@
 			<div
 				in:send={{ key: novelty._id }}
 				out:receive={{ key: novelty._id }}
-				animate:flip={{ duration: 400 }}
+				animate:flip={{ duration: 600 }}
 				class="justify-self-start"
 			>
 				<CardNoveltySmall
