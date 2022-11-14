@@ -5,14 +5,14 @@
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
-	import {validateInputText} from "$lib/components/inputs/validators"
+	import { validateInputText } from '$lib/components/inputs/validators';
 	import AdminModal from '$lib/components/modals/AdminModal.svelte';
 	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 	export let data: PageData;
 	let list = true;
 	let loading = false;
-	let modalConfirm = false
-	let messageSubmit = {status: false, message: ""}
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -46,19 +46,23 @@
 	];
 
 	const validateInputs = (data: any) => {
-		if(validateInputText(data[0].value).status && validateInputText(data[1].value).status && validateInputText(data[3].value).status) {
-			return {status: true, message: "Se subio correctamente"}
-		}else{
-			return {status: false, message: "Alguno de los datos ingresados es incorrecto"}
+		if (
+			validateInputText(data[0].value).status &&
+			validateInputText(data[1].value).status &&
+			validateInputText(data[3].value).status
+		) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
 		}
-	}
+	};
 
 	const serviceSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 
 		loading = true;
 		const { data } = e.detail;
-		console.log(data)
+		console.log(data);
 		const body = {
 			name: data[0].value,
 			module: data[1].value,
@@ -66,25 +70,26 @@
 			organism: data[3].value
 		};
 
-		messageSubmit = validateInputs(data)
-		if(!messageSubmit.status){
-			return modalConfirm = true
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
 		}
-			try {
-				await fetch(`/api/services`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Accept: 'application/json'
-					},
-					body: JSON.stringify(body)
-				});
-				modalConfirm = true
-			} catch (err) {
-				console.log(err);
-			} finally {
-				loading = false;
-			}
+		try {
+			await fetch(`/api/services`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json'
+				},
+				body: JSON.stringify(body)
+			});
+			modalConfirm = true;
+		} catch (err) {
+			console.log(err);
+		} finally {
+			loading = false;
+		}
 	};
 
 	const deleteService = async (e: CustomEvent) => {
@@ -134,20 +139,24 @@
 				on:custom-submit={serviceSubmit}
 			/>
 		{/if}
+	</div>
+	<div>
 		{#if modalConfirm}
-			<AdminModal
+			<!-- <AdminModal
 				title="Confirmacion"
 				on:close-modal={() => {
-					modalConfirm = false
+					modalConfirm = false;
 				}}
-			>
-				<AdminModalConfirm
-					slot="header"
-					status={messageSubmit.status}
-					message={messageSubmit.message}
-				>
-				</AdminModalConfirm>
-			</AdminModal>
+			> -->
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					list = messageSubmit.status;
+				}}
+			/>
+			<!-- </AdminModal> -->
 		{/if}
 	</div>
 </main>
