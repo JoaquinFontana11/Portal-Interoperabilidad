@@ -57,7 +57,7 @@
 			body: data[2].value,
 			image: data[3].value,
 			slug:
-				'/novedades/' +
+				'/pages/catalogo//novedades/' +
 				data[0].value
 					.toLowerCase()
 					.replace(/[^a-zA-Z]/g, ' ')

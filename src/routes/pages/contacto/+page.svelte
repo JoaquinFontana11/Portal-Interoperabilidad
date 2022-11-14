@@ -38,7 +38,10 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<form on:submit|preventDefault={sendMail} class="flex flex-col gap-3 w-1/2 ml-auto mr-auto">
+	<form
+		on:submit|preventDefault={sendMail}
+		class="flex flex-col gap-3 w-1/2 ml-auto mr-auto bg-gray-100 rounded-lg shadow-lg p-10"
+	>
 		<div>
 			<label
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
