@@ -107,7 +107,7 @@
 	<slot />
 {:else}
 	<Navbar {menus} />
-	<main class="min-h-screen">
+	<main class="min-h-screen bg-section z-10">
 		<slot />
 	</main>
 	<Footer links={linksFooter} />

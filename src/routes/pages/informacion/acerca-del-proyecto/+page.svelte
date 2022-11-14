@@ -26,12 +26,11 @@
 	];
 </script>
 
-<div class="h-10" />
 <Section
 	title="Acerca de este proyecto"
 	config={{
 		titleColor: 'text-sky-400',
-		backgroundColor: 'bg-white'
+		backgroundColor: 'bg-transparent'
 	}}
 >
 	<p class="mb-3 text-lg font-medium text-gray-500 md:text-xl dark:text-gray-400">

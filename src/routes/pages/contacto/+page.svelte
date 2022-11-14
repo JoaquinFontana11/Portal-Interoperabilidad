@@ -12,6 +12,8 @@
 	};
 
 	const sendMail = async () => {
+		if (loading) return;
+		loading = true;
 		try {
 			await fetch(`/api/email`, {
 				method: 'POST',
@@ -29,15 +31,14 @@
 	};
 </script>
 
-<div class="h-10" />
 <Section
 	title="Formulario de contacto"
 	config={{
 		titleColor: 'text-sky-400',
-		backgroundColor: 'bg-white'
+		backgroundColor: 'bg-transparent'
 	}}
 >
-	<form on:submit|preventDefault={sendMail}>
+	<form on:submit|preventDefault={sendMail} class="flex flex-col gap-3 w-1/2 ml-auto mr-auto">
 		<div>
 			<label
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -103,7 +104,7 @@
 			/>
 		</div>
 		<button
-			class="w-full m-0 focus:outline-none text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-900 flex justify-center"
+			class="w-full flex items-center justify-center m-0 h-16 focus:outline-none text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-900"
 		>
 			{#if loading}
 				<Spinner />

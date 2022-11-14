@@ -7,12 +7,11 @@
 	let noveltys = JSON.parse(data.noveltys);
 </script>
 
-<div class="h-10" />
 <Section
 	title="Ultimas novedades"
 	config={{
 		titleColor: 'text-sky-400',
-		backgroundColor: 'bg-white'
+		backgroundColor: 'bg-transparent'
 	}}
 >
 	<div class="grid grid-cols-5 items-center w-full">

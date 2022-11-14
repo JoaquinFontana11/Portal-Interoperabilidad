@@ -5,12 +5,11 @@
 	export let data: PageData;
 </script>
 
-<div class="h-10" />
 <Section
 	title="Estadisticas de uso"
 	config={{
 		titleColor: 'text-sky-400',
-		backgroundColor: 'bg-white'
+		backgroundColor: 'bg-transparent'
 	}}
 >
 	<Statistic graphs={JSON.parse(data.graphs)} />
