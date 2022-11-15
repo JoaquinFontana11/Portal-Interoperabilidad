@@ -5,9 +5,13 @@
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import { BarChartSimple, PieChart } from '@carbon/charts-svelte';
+	import { validateInputText, validateEmptyInput } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let graph: any;
 	let loading = false;
+	let error = false;
+	let messageSubmit = { status: false, message: '' };
 
 	let components: IComponent[] = [
 		{
@@ -35,12 +39,26 @@
 			required: true
 		});
 
+	const validateInputs = (data: any) => {
+		if (validateInputText(data[0].value).status && validateEmptyInput(data[1].value).status) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	const dataSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 
 		loading = true;
 		const { data } = e.detail;
 		console.log(data);
+
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (error = true);
+		}
 
 		if (graph.type !== 'bar-floating')
 			graph.data = [
@@ -69,6 +87,7 @@
 				},
 				body: JSON.stringify(graph)
 			});
+			error = false;
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -101,6 +120,13 @@
 	{loading}
 	on:custom-submit={dataSubmit}
 />
+{#if error}
+	<div class="w-full flex justify-center">
+		<span class="block text-red-600 dark:text-red-500 mb-2 text-base font-medium"
+			>Algunos de los datos ingresados es Incorrecto</span
+		>
+	</div>
+{/if}
 
 <p>Previsualizacion</p>
 <div class="w-full flex justify-center gap-1">
