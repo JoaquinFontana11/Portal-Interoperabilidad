@@ -24,7 +24,8 @@ const graphSchema = new Schema<IGraph>({
 	data: [
 		{
 			name: String,
-			value: Number
+			value: Number,
+			valueInit: Number
 		}
 	]
 });

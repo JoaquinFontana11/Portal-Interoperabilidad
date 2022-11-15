@@ -7,6 +7,7 @@ interface IFile {
 	size: number;
 	order: number;
 	date: Date;
+	description: string;
 }
 
 const fileSchema = new Schema<IFile>({
@@ -31,7 +32,8 @@ const fileSchema = new Schema<IFile>({
 	date: {
 		type: Date,
 		default: Date.now()
-	}
+	},
+	description: String
 });
 
 const FileModel = model<IFile>('files', fileSchema);

@@ -9,7 +9,7 @@
 	export let graph: any;
 	let loading = false;
 
-	const components: IComponent[] = [
+	let components: IComponent[] = [
 		{
 			type: 'text',
 			label: 'Nombre del dato',
@@ -26,6 +26,15 @@
 		}
 	];
 
+	if (graph.type == 'bar-floating')
+		components.push({
+			type: 'number',
+			label: 'Valor de inicio del dato',
+			name: 'valueInit',
+			value: '',
+			required: true
+		});
+
 	const dataSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 
@@ -33,13 +42,23 @@
 		const { data } = e.detail;
 		console.log(data);
 
-		graph.data = [
-			...graph.data,
-			{
-				name: data[0].value,
-				value: data[1].value
-			}
-		];
+		if (graph.type !== 'bar-floating')
+			graph.data = [
+				...graph.data,
+				{
+					name: data[0].value,
+					value: data[1].value
+				}
+			];
+		else
+			graph.data = [
+				...graph.data,
+				{
+					name: data[0].value,
+					value: data[1].value,
+					valueInit: data[2].value
+				}
+			];
 
 		try {
 			await fetch(`/api/graphs/${graph._id}`, {
@@ -106,7 +125,7 @@
 				data={graph.data.map((data) => {
 					return {
 						group: data.name,
-						value: data.value
+						value: [data.valueInit, data.value]
 					};
 				})}
 				options={{
@@ -141,12 +160,23 @@
 	{:else}
 		<p>Agrega datos para visualizar el grafico!</p>
 	{/if}
-	<AdminList
-		headers={['nombre', 'valor']}
-		attributes={['name', 'value']}
-		data={graph.data}
-		on:delete-doc={deleteData}
-		caption="Datos del grafico"
-		actions={['delete']}
-	/>
+	{#if graph.type == 'bar-floating'}
+		<AdminList
+			headers={['nombre', 'valor', 'inicio de valor']}
+			attributes={['name', 'value', 'valueInit']}
+			data={graph.data}
+			on:delete-doc={deleteData}
+			caption="Datos del grafico"
+			actions={['delete']}
+		/>
+	{:else}
+		<AdminList
+			headers={['nombre', 'valor']}
+			attributes={['name', 'value']}
+			data={graph.data}
+			on:delete-doc={deleteData}
+			caption="Datos del grafico"
+			actions={['delete']}
+		/>
+	{/if}
 </div>

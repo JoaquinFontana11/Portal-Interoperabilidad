@@ -18,7 +18,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-lg p-10 ">
+	<div class="bg-gray-50 rounded-lg shadow-lg p-10">
 		<div
 			id="accordion-flush"
 			data-accordion="collapse"

@@ -28,6 +28,13 @@
 				{ value: 'files', name: 'Archivo' },
 				{ value: 'videos', name: 'Video' }
 			]
+		},
+		{
+			type: 'text',
+			label: 'Descripcion del archivo',
+			name: 'description',
+			value: '',
+			required: true
 		}
 	];
 
@@ -48,7 +55,8 @@
 			const body = {
 				file: file[1],
 				type: data[1].value,
-				name: files[0].name
+				name: files[0].name,
+				description: data[2].value
 			};
 			try {
 				await fetch(`/api/files`, {
@@ -94,14 +102,15 @@
 	<div class="w-3/4 h-3/4 absolute bottom-1/2 right-1/2 transform translate-x-1/2 translate-y-1/2">
 		{#if list}
 			<AdminList
-				headers={['Nombre', 'Extension', 'Orden']}
-				attributes={['name', 'extension', 'order']}
+				headers={['Nombre', 'Descripcion', 'Extension', 'Orden']}
+				attributes={['name', 'description', 'extension', 'order']}
 				data={JSON.parse(data.files).map((file) => {
 					return {
 						_id: file._id,
 						name: file.name.split('.').at(0),
 						extension: file.name.split('.').at(-1),
-						order: file.order
+						order: file.order,
+						description: file.description
 					};
 				})}
 				on:delete-doc={deleteFile}

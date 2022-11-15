@@ -14,7 +14,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="grid grid-cols-5 items-center w-full">
+	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full">
 		{#each noveltys as novelty}
 			<CardNoveltySmall
 				slug={novelty.slug}

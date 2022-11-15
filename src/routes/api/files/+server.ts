@@ -18,7 +18,13 @@ export const POST: RequestHandler = async ({ request }) => {
 	const stats = statSync(`static${path}`);
 
 	try {
-		const newFile = await createFile({ name: data.name, type, url: path, size: stats.size });
+		const newFile = await createFile({
+			name: data.name,
+			type,
+			url: path,
+			size: stats.size,
+			description: data.description
+		});
 		return json({
 			status: '201',
 			newFile

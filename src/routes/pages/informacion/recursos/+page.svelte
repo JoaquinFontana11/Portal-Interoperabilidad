@@ -48,10 +48,17 @@
 								{file.name}</a
 							>
 						</div>
-						<div
-							class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
-						>
-							{(file.size / 1048576).toFixed(0)} MB
+						<div class="flex gap-3">
+							<p
+								class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
+							>
+								{file.description ? file.description : ''}
+							</p>
+							<p
+								class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
+							>
+								{(file.size / 1048576).toFixed(0)} MB
+							</p>
 						</div>
 					</div>
 				</li>

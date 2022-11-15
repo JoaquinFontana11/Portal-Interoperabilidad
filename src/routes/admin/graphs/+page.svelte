@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Plus, Table } from 'svelte-hero-icons';
+	// import { Plus, Table } from 'svelte-hero-icons';
 	import type { IComponent } from '$lib/types/Components';
-	import AdminForm from '$lib/components/AdminForm.svelte';
+	// import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	// import AdminButton from '$lib/components/AdminButton.svelte';
 
@@ -10,52 +10,52 @@
 	// let list = true;
 	let loading = false;
 
-	const components: IComponent[] = [
-		{
-			type: 'text',
-			label: 'Titulo del grafico',
-			name: 'title',
-			value: '',
-			required: true
-		},
-		{
-			type: 'select',
-			label: 'Tipo de grafico',
-			name: 'type',
-			value: '',
-			required: true,
-			options: [
-				{ value: 'pie', name: 'torta' },
-				{ value: 'bar', name: 'barras' }
-			]
-		}
-	];
+	// const components: IComponent[] = [
+	// 	{
+	// 		type: 'text',
+	// 		label: 'Titulo del grafico',
+	// 		name: 'title',
+	// 		value: '',
+	// 		required: true
+	// 	},
+	// 	{
+	// 		type: 'select',
+	// 		label: 'Tipo de grafico',
+	// 		name: 'type',
+	// 		value: '',
+	// 		required: true,
+	// 		options: [
+	// 			{ value: 'pie', name: 'torta' },
+	// 			{ value: 'bar', name: 'barras' }
+	// 		]
+	// 	}
+	// ];
 
-	const graphSubmit = async (e: CustomEvent) => {
-		if (loading) return;
+	// const graphSubmit = async (e: CustomEvent) => {
+	// 	if (loading) return;
 
-		loading = true;
-		const { data } = e.detail;
-		const body = {
-			title: data[0].value,
-			type: data[1].value
-		};
+	// 	loading = true;
+	// 	const { data } = e.detail;
+	// 	const body = {
+	// 		title: data[0].value,
+	// 		type: data[1].value
+	// 	};
 
-		try {
-			await fetch(`/api/graphs`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Accept: 'application/json'
-				},
-				body: JSON.stringify(body)
-			});
-		} catch (err) {
-			console.log(err);
-		} finally {
-			loading = false;
-		}
-	};
+	// 	try {
+	// 		await fetch(`/api/graphs`, {
+	// 			method: 'POST',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 				Accept: 'application/json'
+	// 			},
+	// 			body: JSON.stringify(body)
+	// 		});
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	} finally {
+	// 		loading = false;
+	// 	}
+	// };
 
 	const deleteGraph = async (e: CustomEvent) => {
 		try {
