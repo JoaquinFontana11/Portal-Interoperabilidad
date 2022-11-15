@@ -9,6 +9,8 @@
 	export let data: PageData;
 	// let list = true;
 	let loading = false;
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	// const components: IComponent[] = [
 	// 	{
