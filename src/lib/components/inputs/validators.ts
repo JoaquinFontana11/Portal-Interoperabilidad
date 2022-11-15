@@ -11,7 +11,7 @@ const error = {
 };
 
 const extensionErrorTypes = ['.zip', '.rar', '.exe', '.iso'];
-const extensionsImages = ['.jpg', '.png', '.jpeg'];
+const extensionsImages = ['.jpg', '.png', '.jpeg', '.jfif'];
 
 const factoryValidators = (type: string | null = null) => {
 	return (

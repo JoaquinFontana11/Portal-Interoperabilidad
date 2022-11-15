@@ -4,10 +4,14 @@
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
+	import { validateInputFile, validateEmptyInput } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let data: any;
 	let list = true;
 	let loading = false;
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -30,12 +34,26 @@
 		}
 	];
 
+	const validateInputs = (data: any) => {
+		if (validateInputFile(data[0].value).status && validateEmptyInput(data[1].value).status) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	const fileSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 		const { data } = e.detail;
 		const files = data[0].value;
 
 		loading = true;
+
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
+		}
 
 		const reader = new FileReader();
 		reader.readAsDataURL(files[0]);
@@ -58,6 +76,7 @@
 					},
 					body: JSON.stringify(body)
 				});
+				modalConfirm = true;
 			} catch (err) {
 				console.log(err);
 			} finally {
@@ -114,6 +133,23 @@
 				submitMessage="Subir archivo"
 				{loading}
 				on:custom-submit={fileSubmit}
+			/>
+		{/if}
+	</div>
+	<div>
+		{#if modalConfirm}
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					messageSubmit.status ? location.reload() : (list = false);
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
+				}}
 			/>
 		{/if}
 	</div>

@@ -5,10 +5,14 @@
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
 	import AdminListRowPhoto from '$lib/components/rows/AdminListRowPhoto.svelte';
+	import { validateInputText, validateInputFileImage } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let data: any;
 	let list = true;
 	let loading = false;
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -26,6 +30,14 @@
 		}
 	];
 
+	const validateInputs = (data: any) => {
+		if (validateInputFileImage(data[0].value).status && validateInputText(data[1].value).status) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	const imageSubmit = async (e: CustomEvent) => {
 		console.log(e.detail);
 		if (loading) return;
@@ -33,10 +45,16 @@
 		const { data } = e.detail;
 		const files = data[0].value;
 
-		if (!files[0].type.includes('image'))
-			throw new Error('No podes subir algo que no sea una imagen');
+		// if (!files[0].type.includes('image'))
+		// 	throw new Error('No podes subir algo que no sea una imagen');
 
 		loading = true;
+
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
+		}
 
 		const reader = new FileReader();
 		reader.readAsDataURL(files[0]);
@@ -58,6 +76,7 @@
 					},
 					body: JSON.stringify(body)
 				});
+				modalConfirm = true;
 				// location.reload();
 			} catch (err) {
 				console.log('asdasd', err);
@@ -109,6 +128,23 @@
 				submitMessage="Subir imagen"
 				{loading}
 				on:custom-submit={imageSubmit}
+			/>
+		{/if}
+	</div>
+	<div>
+		{#if modalConfirm}
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					messageSubmit.status ? location.reload() : (list = false);
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
+				}}
 			/>
 		{/if}
 	</div>

@@ -6,8 +6,8 @@
 	import AdminList from '$lib/components/AdminList.svelte';
 	import AdminButton from '$lib/components/AdminButton.svelte';
 	import { validateInputText } from '$lib/components/inputs/validators';
-	import AdminModal from '$lib/components/modals/AdminModal.svelte';
 	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
+
 	export let data: PageData;
 	let list = true;
 	let loading = false;
@@ -142,21 +142,19 @@
 	</div>
 	<div>
 		{#if modalConfirm}
-			<!-- <AdminModal
-				title="Confirmacion"
-				on:close-modal={() => {
-					modalConfirm = false;
-				}}
-			> -->
 			<AdminModalConfirm
 				status={messageSubmit.status}
 				message={messageSubmit.message}
 				on:close={() => {
 					modalConfirm = false;
-					list = messageSubmit.status;
+					messageSubmit.status ? location.reload() : (list = false);
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
 				}}
 			/>
-			<!-- </AdminModal> -->
 		{/if}
 	</div>
 </main>
