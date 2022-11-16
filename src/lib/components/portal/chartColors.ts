@@ -1,9 +1,23 @@
-const colors = ['#b7e4f8', '#6ec9f2', '#26aeeb', '#0ea5e9', '#0b84ba', '#06425d', '#043146'];
+const colors = [
+	'#00b3f7',
+	'#47c1f5',
+	'#65c8f3',
+	'#98d4ee',
+	'#98b9ee',
+	'#679bf1',
+	'#4984e6',
+	'#6472ea',
+	'#5161ec',
+	'#3b4dec',
+	'#1e33ee',
+	'#3806f1',
+	'#5227f3'
+];
 
 export const getColors = (labels: string[]) => {
 	const obj: any = {};
 	labels.forEach((e, i) => {
-		obj[e] = colors[Math.floor(Math.random() * colors.length)];
+		obj[e] = colors[i] ? colors[i] : colors[Math.floor(Math.random() * colors.length)];
 	});
 	return obj;
 };

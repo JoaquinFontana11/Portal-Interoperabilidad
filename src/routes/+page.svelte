@@ -1,6 +1,13 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Icon, Chip, LightningBolt, Home, PresentationChartBar } from 'svelte-hero-icons';
+	import {
+		Icon,
+		Chip,
+		LightningBolt,
+		Home,
+		PresentationChartBar,
+		BadgeCheck
+	} from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
 	import Timeline from '$lib/components/portal/Timeline.svelte';
 	import Noveltys from '$lib/components/portal/Noveltys.svelte';
@@ -10,7 +17,7 @@
 	const objetivos = [
 		{
 			content: 'Gestion publica de calidad',
-			icon: Chip
+			icon: BadgeCheck
 		},
 		{
 			content: 'Mayor integracion y desarrollo de la sociedad',
@@ -88,8 +95,8 @@
 	<img src="/img/IOP.png" class="h-56" alt="logo interoperabilidad" />
 </div>
 <Section
-	title="Objetivos/Beneficios"
-	overview="¿Que es IOP?"
+	title="¿Que es IOP?"
+	overview="Objetivos y beneficios"
 	config={{
 		titleColor: 'text-gray-900',
 		backgroundColor: 'bg-slate-50'
@@ -98,9 +105,9 @@
 	<p
 		class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center"
 	>
-		El proyecto de Interoperabilidad busca impulsar el trabajo colaborativo y el intercambio de
-		información entre los organismos de la Administración Pública de la Provincia de Buenos Aires,
-		en distintos niveles y jurisdicciones y con la ciudadanía.
+		El proyecto de Interoperabilidad (IOP) busca impulsar el trabajo colaborativo y el intercambio
+		de información entre los organismos de la Administración Pública de la Provincia de Buenos
+		Aires, en distintos niveles y jurisdicciones y con la ciudadanía.
 	</p>
 	<p
 		class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center"
@@ -145,7 +152,7 @@
 </Section>
 <Section
 	title="Ultimas novedades"
-	overview="Las ultimas noticias sobre el proyecto de Interoperabilidad"
+	overview="Las ultimas noticias sobre el proyecto de IOP"
 	direction="center"
 	config={{
 		titleColor: 'text-gray-900',

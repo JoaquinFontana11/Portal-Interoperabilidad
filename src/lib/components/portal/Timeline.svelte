@@ -99,8 +99,7 @@
 					{#if current == i}
 						<p
 							class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 w-[500px]"
-							in:blur={{ duration: 500 }}
-							out:slide={{ duration: 500 }}
+							transition:slide={{ duration: 500 }}
 						>
 							{hito.description}
 						</p>

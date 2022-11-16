@@ -94,8 +94,10 @@
 					required
 					bind:value={mail.reason}
 				>
-					<option>Motivo 1</option>
-					<option>Motivo 2</option>
+					<option>Quiero saber más acerca de IOP</option>
+					<option>Quiero saber más acerca de algún servicio</option>
+					<option>Quiero iniciar un proyecto de integración</option>
+					<option>Quiero ofrecer un servicio para su consumo</option>
 				</select>
 			</div>
 		</div>

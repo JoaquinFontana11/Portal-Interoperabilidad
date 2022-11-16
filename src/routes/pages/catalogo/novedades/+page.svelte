@@ -18,8 +18,10 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="mb-6">
-		<AdminSearchInput placeholder="Ingrese nombre de la novedad..." bind:value={filterNoveltys} />
+	<div class="mb-6 flex flex-col">
+		<div class="w-96 relative self-end">
+			<AdminSearchInput placeholder="Ingrese nombre de la novedad..." bind:value={filterNoveltys} />
+		</div>
 	</div>
 
 	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full">
