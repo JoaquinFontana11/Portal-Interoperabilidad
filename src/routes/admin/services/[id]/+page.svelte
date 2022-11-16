@@ -3,10 +3,14 @@
 	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import { page } from '$app/stores';
+	import { validateInputText } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let data: PageData;
 	let loading = false;
 	const service = JSON.parse(data.service);
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -39,6 +43,18 @@
 		}
 	];
 
+	const validateInputs = (data: any) => {
+		if (
+			validateInputText(data[0].value).status &&
+			validateInputText(data[1].value).status &&
+			validateInputText(data[3].value).status
+		) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	const serviceSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 
@@ -50,6 +66,11 @@
 			function: data[2].value,
 			organism: data[3].value
 		};
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
+		}
 
 		try {
 			await fetch(`/api/services/${service._id}`, {
@@ -60,6 +81,7 @@
 				},
 				body: JSON.stringify(body)
 			});
+			modalConfirm = true;
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -78,5 +100,22 @@
 			{loading}
 			on:custom-submit={serviceSubmit}
 		/>
+	</div>
+	<div>
+		{#if modalConfirm}
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					messageSubmit.status ? (location.href = '/admin/services') : '';
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
+				}}
+			/>
+		{/if}
 	</div>
 </main>

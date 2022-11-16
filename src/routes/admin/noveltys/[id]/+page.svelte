@@ -2,10 +2,14 @@
 	import type { PageData } from './$types';
 	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
+	import { validateInputText, validateEmptyInput } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let data: PageData;
 	let loading = false;
 	const novelty = JSON.parse(data.novelty);
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -44,6 +48,19 @@
 		}
 	];
 
+	const validateInputs = (data: any) => {
+		if (
+			validateInputText(data[0].value).status &&
+			validateInputText(data[1].value).status &&
+			validateInputText(data[3].value).status &&
+			validateEmptyInput(data[4].value).status
+		) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	console.log(new Date(novelty.date).toLocaleDateString().split('/').reverse().join('-'));
 
 	const noveltySubmit = async (e: CustomEvent) => {
@@ -67,6 +84,12 @@
 			date: data[4].value
 		};
 
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
+		}
+
 		try {
 			await fetch(`/api/noveltys/${novelty._id}`, {
 				method: 'PATCH',
@@ -76,6 +99,7 @@
 				},
 				body: JSON.stringify(body)
 			});
+			modalConfirm = true;
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -93,5 +117,22 @@
 			{loading}
 			on:custom-submit={noveltySubmit}
 		/>
+	</div>
+	<div>
+		{#if modalConfirm}
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					messageSubmit.status ? (location.href = '/admin/noveltys') : '';
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
+				}}
+			/>
+		{/if}
 	</div>
 </main>

@@ -3,10 +3,14 @@
 	import type { IComponent } from '$lib/types/Components';
 	import AdminForm from '$lib/components/AdminForm.svelte';
 	import AdminFormGraphData from '$lib/components/inputs/AdminFormGraphData.svelte';
+	import { validateInputText, validateEmptyInput } from '$lib/components/inputs/validators';
+	import AdminModalConfirm from '$lib/components/modals/AdminModalConfirm.svelte';
 
 	export let data: PageData;
 	let loading = false;
 	const graph = JSON.parse(data.graph);
+	let modalConfirm = false;
+	let messageSubmit = { status: false, message: '' };
 
 	const components: IComponent[] = [
 		{
@@ -30,6 +34,14 @@
 		}
 	];
 
+	const validateInputs = (data: any) => {
+		if (validateInputText(data[0].value).status && validateEmptyInput(data[1].value).status) {
+			return { status: true, message: 'Se subio correctamente' };
+		} else {
+			return { status: false, message: 'Alguno de los datos ingresados es incorrecto' };
+		}
+	};
+
 	const graphSubmit = async (e: CustomEvent) => {
 		if (loading) return;
 
@@ -40,6 +52,12 @@
 			type: data[1].value
 		};
 
+		messageSubmit = validateInputs(data);
+		if (!messageSubmit.status) {
+			loading = false;
+			return (modalConfirm = true);
+		}
+
 		try {
 			await fetch(`/api/graphs/${graph._id}`, {
 				method: 'PATCH',
@@ -49,6 +67,7 @@
 				},
 				body: JSON.stringify(body)
 			});
+			modalConfirm = true;
 		} catch (err) {
 			console.log(err);
 		} finally {
@@ -68,5 +87,22 @@
 		>
 			<AdminFormGraphData slot="bottom-slot" {graph} />
 		</AdminForm>
+	</div>
+	<div>
+		{#if modalConfirm}
+			<AdminModalConfirm
+				status={messageSubmit.status}
+				message={messageSubmit.message}
+				on:close={() => {
+					modalConfirm = false;
+					messageSubmit.status ? (location.href = '/admin/graphs') : '';
+					// if (messageSubmit.status) {
+					// 	location.reload();
+					// } else {
+					// 	list = false;
+					// }
+				}}
+			/>
+		{/if}
 	</div>
 </main>
