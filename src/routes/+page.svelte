@@ -29,34 +29,56 @@
 	const timeline = [
 		{
 			name: 'Presentacion del proyecto',
-			description: 'Se presenta la propuesta del proceso de interoperabilidad',
-			date: new Date(),
+			description:
+				'Plan estratégico de Modernización de la Administración Pública de la Provincia de Buenos Aires',
+			date: new Date(2016, 2, 2),
 			image: '/img/timeline-presentacion.jpg'
 		},
 		{
-			name: 'Aprobacion del proyecto',
-			description: 'Comienzan a operar los servicios de interoperabilidad',
-			date: new Date(),
+			name: 'Implementacion del proyecto',
+			description:
+				'Implementación de la Interoperabilidad de Datos de la Administración Pública de la Provincia de Buenos Aires',
+			date: new Date(2019, 2, 2),
 			image: '/img/timeline-aprobacion.jpg'
 		},
 		{
-			name: 'Ampliacion de servicios',
-			description: 'Aumentamos el alcance del proyect con nuevos servicios',
-			date: new Date(),
+			name: 'Migración de proyectos de integración a ESB',
+			description: 'Descripcion sobre que es el ESB y que ventajas trae',
+			date: new Date(2020, 2, 2),
 			image: '/img/timeline-ampliacion.jpg'
 		},
 		{
-			name: 'Migracion de servicios',
+			name: 'Incorporacion de servicios al catálogo de WS',
 			description:
-				'Se realizo una migracion de los servicios para aumentar al eficiencia y la escalabilidad de los mismos',
-			date: new Date(),
+				'Se incorporaron al proyecto los servicios del Modulo RLM, RENAPER, REDIP, DPSIT, AFIP y la Plataforma de Firma Dcoumental',
+			date: new Date(2020, 2, 2),
+			image: '/img/timeline-migracion.jpg'
+		},
+		{
+			name: 'Incorporacion de servicios al catálogo de WS',
+			description:
+				'Se incorporaron al proyecto los servicios de RDAM, SIAPE, OPDS, Certificado de vacunacion (DPSIT) y Rubrica conceptos (Ministerio de trabajo)',
+			date: new Date(2021, 2, 2),
+			image: '/img/timeline-migracion.jpg'
+		},
+		{
+			name: 'Actualización de servicio domicilio digital y delegación digital DPSIT',
+			description:
+				'Se actualizo el servicio de domicion digital y delegacion que permite.....................',
+			date: new Date(2022, 2, 2),
+			image: '/img/timeline-migracion.jpg'
+		},
+		{
+			name: 'Incorporacion de servicios al catálogo de WS',
+			description: 'Se incorporaron al proyecto los servicios de SARA y estructura-organica-gdeba',
+			date: new Date(2022, 2, 2),
 			image: '/img/timeline-migracion.jpg'
 		},
 		{
 			name: 'Actualidad',
 			description:
 				'Actualmante el proyecto de interoperabilidad seencuentra trabajando con X organismos',
-			date: new Date(),
+			date: new Date(2022, 2, 2),
 			graph: JSON.parse(data.graphs).find((graph: any) => graph.type == 'pie')
 		}
 	];

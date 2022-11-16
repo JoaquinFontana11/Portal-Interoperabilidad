@@ -4,6 +4,7 @@
 	import { blur, slide } from 'svelte/transition';
 	import { lazyLoad } from './lazyLoad.js';
 	import { DonutChart } from '@carbon/charts-svelte';
+	import { getColors } from './chartColors';
 	export let info: any;
 
 	let current = 0;
@@ -60,6 +61,9 @@
 							center: {
 								label: 'Organismos'
 							}
+						},
+						color: {
+							scale: getColors(hito.graph.data.map((data) => data.name))
 						}
 					}}
 				/>
@@ -87,7 +91,7 @@
 					/>
 					<time
 						class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 border-"
-						>{hito.date.toLocaleDateString()}</time
+						>{hito.date.getFullYear()}</time
 					>
 					<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
 						{hito.name}

@@ -2,6 +2,7 @@
 	import '@carbon/styles/css/styles.css';
 	import '@carbon/charts/styles.css';
 	import { BarChartSimple, PieChart } from '@carbon/charts-svelte';
+	import { getColors } from './chartColors';
 
 	export let graphs: any;
 
@@ -32,6 +33,9 @@
 				axes: {
 					left: { mapsTo: 'value' },
 					bottom: { mapsTo: 'group', scaleType: 'labels' }
+				},
+				color: {
+					scale: getColors(graphBarFloating.data.map((data) => data.name))
 				}
 			}}
 		/>
@@ -72,7 +76,10 @@
 				toolbar: { enabled: false },
 				legend: { enabled: false },
 				width: '500px',
-				height: '500px'
+				height: '500px',
+				color: {
+					scale: getColors(graphPie.data.map((data) => data.name))
+				}
 			}}
 		/>
 	</div>
@@ -97,6 +104,9 @@
 				axes: {
 					bottom: { mapsTo: 'value' },
 					left: { mapsTo: 'group', scaleType: 'labels' }
+				},
+				color: {
+					scale: getColors(graphBarFloating.data.map((data) => data.name))
 				}
 			}}
 		/>
