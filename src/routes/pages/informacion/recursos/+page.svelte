@@ -5,9 +5,12 @@
 	import { flip } from 'svelte/animate';
 	import Section from '$lib/components/portal/Section.svelte';
 	import AdminSearchInput from '$lib/components/AdminSearchInput.svelte';
+	import Pagination from '$lib/components/portal/Pagination.svelte';
 
 	export let data: PageData;
 	let filterFiles = '';
+	let page = 0;
+	const ePerPage = 1;
 
 	const iconAndColor: any = {
 		pdf: [Document, 'border-rose-300 hover:border-rose-500'],
@@ -28,12 +31,14 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-lg p-10 ">
-		<AdminSearchInput placeholder="Ingrese nombre de archivo..." bind:value={filterFiles} />
+	<div class="bg-gray-50 rounded-lg shadow-lg p-10 flex flex-col">
+		<div class="w-96 relative self-end">
+			<AdminSearchInput placeholder="Ingrese nombre de archivo..." bind:value={filterFiles} />
+		</div>
 		<ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
-			{#each JSON.parse(data.files).filter((file) => file.name
-					.toLowerCase()
-					.includes(filterFiles)) as file (file._id)}
+			{#each JSON.parse(data.files)
+				.filter((file) => file.name.toLowerCase().includes(filterFiles))
+				.slice(page * ePerPage, page * ePerPage + ePerPage) as file (file._id)}
 				<div in:fade={{ duration: 300 }} animate:flip={{ duration: 300 }}>
 					<li class="pb-3 sm:pb-4 pt-3 hover:transition hover:-translate-y-1 duration-75">
 						<div class="flex items-center space-x-4">
@@ -76,5 +81,10 @@
 				</div>
 			{/each}
 		</ul>
+		{#if ePerPage < JSON.parse(data.files).length}
+			<div class=" relative self-end">
+				<Pagination bind:value={page} maxPage={JSON.parse(data.files).length / ePerPage} />
+			</div>
+		{/if}
 	</div>
 </Section>

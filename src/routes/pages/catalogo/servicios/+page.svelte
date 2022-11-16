@@ -5,6 +5,7 @@
 	import { quintOut } from 'svelte/easing';
 	import Section from '$lib/components/portal/Section.svelte';
 	import AdminSearchInput from '$lib/components/AdminSearchInput.svelte';
+	import Pagination from '$lib/components/portal/Pagination.svelte';
 
 	export let data: PageData;
 	let services = JSON.parse(data.services).map((s) => {
@@ -12,6 +13,8 @@
 		return s;
 	});
 	let filterServs = '';
+	let page = 0;
+	const ePerPage = 1;
 </script>
 
 <Section
@@ -21,17 +24,19 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-lg p-10">
-		<AdminSearchInput placeholder="Ingrese nombre del servicio..." bind:value={filterServs} />
+	<div class="bg-gray-50 rounded-lg shadow-lg p-10 flex flex-col">
+		<div class="w-96 relative self-end">
+			<AdminSearchInput placeholder="Ingrese nombre del servicio..." bind:value={filterServs} />
+		</div>
 		<div
 			id="accordion-flush"
 			data-accordion="collapse"
 			data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
 			data-inactive-classes="text-gray-500 dark:text-gray-400"
 		>
-			{#each services.filter((service) => service.name
-					.toLowerCase()
-					.includes(filterServs)) as service (service._id)}
+			{#each services
+				.filter((service) => service.name.toLowerCase().includes(filterServs))
+				.slice(page * ePerPage, page * ePerPage + ePerPage) as service (service._id)}
 				<div in:fade={{ duration: 300 }} animate:flip={{ duration: 300 }}>
 					<h2 id="accordion-flush-heading-1">
 						<button
@@ -83,5 +88,10 @@
 				</div>
 			{/each}
 		</div>
+		{#if ePerPage < services.length}
+			<div class=" relative self-end mt-4">
+				<Pagination bind:value={page} maxPage={services.length / ePerPage} />
+			</div>
+		{/if}
 	</div>
 </Section>
