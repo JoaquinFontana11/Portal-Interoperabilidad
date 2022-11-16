@@ -55,8 +55,9 @@
 	const validateInputs = (data: any) => {
 		if (
 			validateInputText(data[0].value).status &&
-			validateInputText(data[2].value).status &&
-			validateEmptyInput(data[3].value).status
+			validateInputText(data[1].value).status &&
+			validateInputText(data[3].value).status &&
+			validateEmptyInput(data[4].value).status
 		) {
 			return { status: true, message: 'Se subio correctamente' };
 		} else {
