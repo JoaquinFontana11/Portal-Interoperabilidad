@@ -159,7 +159,7 @@
 		backgroundColor: 'bg-slate-50'
 	}}
 >
-	<Noveltys noveltys={JSON.parse(data.noveltys)} />
+	<Noveltys noveltys={JSON.parse(data.noveltys).slice(0, 3)} />
 	<a
 		href="/pages/catalogo/novedades"
 		class=" z-10 relative inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
