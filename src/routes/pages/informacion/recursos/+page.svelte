@@ -10,7 +10,7 @@
 	export let data: PageData;
 	let filterFiles = '';
 	let page = 0;
-	const ePerPage = 1;
+	const ePerPage = 10;
 
 	const iconAndColor: any = {
 		pdf: [Document, 'border-rose-300 hover:border-rose-500'],

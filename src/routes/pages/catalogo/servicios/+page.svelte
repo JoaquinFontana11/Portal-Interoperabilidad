@@ -14,7 +14,7 @@
 	});
 	let filterServs = '';
 	let page = 0;
-	const ePerPage = 1;
+	const ePerPage = 10;
 </script>
 
 <Section
