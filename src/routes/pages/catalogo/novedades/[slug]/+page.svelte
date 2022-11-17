@@ -2,19 +2,22 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	let novelty = JSON.parse(data.novelty);
-	console.log(novelty);
 </script>
 
-<div
-	class=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-[300px] w-[350px] hover:transform hover:-translate-y-1 duration-75"
->
-	<a href="#" class="overflow-hidden">
-		<img class="rounded-t-lg h-[200px]" src="#" alt="" />
-	</a>
-	<div class="p-5">
-		<a href="#">
-			<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Hola</h5>
-		</a>
-		<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">AA</p>
+<div class="p-10 ">
+	<div class="bg-gray-50 rounded-md shadow-md p-10">
+		<img class="rounded-t-lg p-5 float-right w-1/2 h-1/2" src={novelty.image} alt="" />
+		<p class="text-gray-500 text-sm">{novelty.date.split('T')[0]}</p>
+		<h2
+			class="mb-2 tracking-tight text-sky-400 text-4xl font-extrabold leading-none md:text-5xl lg:text-6xl"
+		>
+			{novelty.title}
+		</h2>
+		<p class=" tracking-tight font-semibold text-gray-500 text-xl mb-2 mt-2">
+			{novelty.summary}
+		</p>
+		<div class="text-justify indent-5 mb-3 text-lg font-light text-gray-500 md:text-xl">
+			{@html novelty.body}
+		</div>
 	</div>
 </div>
