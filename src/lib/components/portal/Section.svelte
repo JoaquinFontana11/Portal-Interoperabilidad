@@ -8,7 +8,7 @@
 	};
 </script>
 
-<section class={`h-auto w-full p-10 ${config.backgroundColor} z-0`}>
+<section class={`h-auto w-full p-10 ${config.backgroundColor} `}>
 	<p
 		class={`text-lg font-normal text-gray-500 lg:text-xldark:text-gray-400 ${
 			direction == 'center' ? 'text-center' : direction == 'left' ? 'text-left' : 'text-right'

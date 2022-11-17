@@ -22,7 +22,7 @@
 	}, 5000);
 </script>
 
-<div class="w-full flex justify-center">
+<div class="w-full flex justify-center z-10 relative">
 	<div class="grid grid-cols-3 grid-rows-2  gap-4 justify-items-end w-auto">
 		{#each noveltyBig as novelty (novelty._id)}
 			<div

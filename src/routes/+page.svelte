@@ -162,7 +162,7 @@
 	<Noveltys noveltys={JSON.parse(data.noveltys)} />
 	<a
 		href="/pages/catalogo/novedades"
-		class="inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
+		class=" z-10 relative inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
 	>
 		Ver mas novedades
 		<svg
