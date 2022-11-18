@@ -11,7 +11,7 @@
 		<li>
 			<button
 				href="#"
-				class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+				class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-white hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 				on:click={() => {
 					value = value == 0 ? value : value - 1;
 				}}
@@ -38,7 +38,7 @@
 						class={`px-3 py-2 leading-tight border ${
 							value == pageNumber
 								? 'text-sky-600 border border-sky-300 bg-sky-50 hover:bg-sky-100 hover:text-sky-700'
-								: 'text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700'
+								: 'text-gray-500 bg-white  border-gray-300 hover:bg-white hover:text-gray-700'
 						} `}
 						on:click={() => {
 							value = pageNumber;
@@ -50,7 +50,7 @@
 		<li>
 			<button
 				href="#"
-				class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+				class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-white hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 				on:click={() => {
 					value = value == maxPage - 1 ? value : value + 1;
 				}}

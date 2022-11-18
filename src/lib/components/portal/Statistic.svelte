@@ -11,9 +11,11 @@
 	const graphBarFloating = graphs.find((graph) => graph.type == 'bar-floating');
 </script>
 
-<div class="bg-gray-100 rounded-lg shadow-lg p-10 grid grid-cols-4 gap-10 grid-flow-row-dense">
+<div
+	class="bg-neutral-50 rounded-lg shadow-lg p-10 grid grid-cols-4 gap-10 grid-flow-row-dense relative z-10"
+>
 	<div
-		class="bg-white h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-3 shadow-lg"
+		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-3 shadow-lg z-10"
 	>
 		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
 			>{graphBar.title}</span
@@ -42,7 +44,7 @@
 	</div>
 	<div class="flex flex-col gap-10">
 		<div
-			class="bg-white h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
+			class="bg-neutral-50 h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
 		>
 			<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
 				>total de servicios</span
@@ -50,7 +52,7 @@
 			<p class="text-6xl font-semibold">1500</p>
 		</div>
 		<div
-			class="bg-white h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
+			class="bg-neutral-50 h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
 		>
 			<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
 				>organismos conectados</span
@@ -59,7 +61,7 @@
 		</div>
 	</div>
 	<div
-		class="bg-white h-[600px] justify-self-right rounded-lg relative flex justify-center items-center col-span-2 shadow-lg"
+		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative flex justify-center items-center col-span-2 shadow-lg"
 	>
 		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
 			>{graphPie.title}</span
@@ -84,7 +86,7 @@
 		/>
 	</div>
 	<div
-		class="bg-white h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-2 shadow-lg"
+		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-2 shadow-lg"
 	>
 		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
 			>{graphBar.title}</span

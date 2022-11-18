@@ -8,10 +8,6 @@
 
 	const menus = [
 		{
-			name: 'Inicio',
-			slug: '/'
-		},
-		{
 			name: 'Informacion',
 			drop: false,
 			submenus: [

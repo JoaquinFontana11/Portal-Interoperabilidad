@@ -31,7 +31,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-lg p-10 flex flex-col">
+	<div class="bg-neutral-50 rounded-lg shadow-lg p-10 flex flex-col z-10 relative">
 		<div class="w-96 relative self-end">
 			<AdminSearchInput placeholder="Ingrese nombre de archivo..." bind:value={filterFiles} />
 		</div>

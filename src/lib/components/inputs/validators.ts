@@ -20,7 +20,7 @@ const factoryValidators = (type: string | null = null) => {
 		styleSucces: { input: string; message: string } = succes
 	) => {
 		let message = '';
-		if (!value) message = 'Debe completar este campo';
+		if (value === '') message = 'Debe completar este campo';
 		if (type == 'text' && /[|°¬!"#$%&@()=?'¡¿´¨+*~}{[^},;:_-]/.test(value))
 			message = 'No se admiten caracteres especiales';
 		if (type == 'file' && validateFilesAndImages(value, extensionErrorTypes))

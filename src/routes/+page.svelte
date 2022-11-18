@@ -118,7 +118,7 @@
 	<div class="flex gap-10 justify-center mt-20">
 		{#each objetivos as objetivo}
 			<div
-				class="flex flex-col gap-5 items-center w-[300px] p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+				class="flex flex-col gap-5 items-center w-[300px] p-6 max-w-sm bg-neutral-50 rounded-lg border border-gray-200 shadow-md hover:bg-neutral-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
 			>
 				<Icon
 					src={objetivo.icon}
@@ -162,7 +162,7 @@
 	<Noveltys noveltys={JSON.parse(data.noveltys).slice(0, 3)} />
 	<a
 		href="/pages/catalogo/novedades"
-		class=" z-10 relative inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
+		class=" z-10 inline-flex items-center justify-end font-medium text-sky-600 dark:text-blue-500 hover:underline relative w-full mt-10 hover:gap-2 duration-75"
 	>
 		Ver mas novedades
 		<svg

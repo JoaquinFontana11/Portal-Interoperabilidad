@@ -18,13 +18,13 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="mb-6 flex flex-col">
+	<div class="mb-6 flex flex-col z-10 relative">
 		<div class="w-96 relative self-end">
 			<AdminSearchInput placeholder="Ingrese nombre de la novedad..." bind:value={filterNoveltys} />
 		</div>
 	</div>
 
-	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full">
+	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full z-10 relative">
 		{#each noveltys.filter((novelty) => novelty.title
 				.toLowerCase()
 				.includes(filterNoveltys)) as novelty (novelty._id)}

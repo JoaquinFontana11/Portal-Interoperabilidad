@@ -33,14 +33,14 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-md p-10 flex flex-col">
+	<div class="bg-neutral-50 rounded-lg shadow-md p-20 flex flex-col z-10 relative">
 		<p class="mb-3 text-lg font-light text-gray-500 md:text-xl dark:text-gray-400">
 			El portal de interoperabilidad es el sitio web de gestión y canal institucional, a través del
 			cual se dará publicidad a los servicios de información disponibles, detallando las bases y
 			condiciones de acceso y utilización; sus modalidades de consumo, consulta e interacción; los
 			protocolos funcionales o técnicos necesarios; y las condiciones de seguridad aplicables.
 		</p>
-		<h4 class=" font-semibold text-gray-500 dark:text-gray-400 text-3xl mb-2 mt-2">Objetivos</h4>
+		<h4 class=" font-semibold text-gray-500 dark:text-gray-400 text-2xl mb-2 mt-2">Objetivos</h4>
 		<p class="mb-3 text-lg font-light text-gray-500 md:text-xl dark:text-gray-400">
 			Facilitar de manera permanente el acceso, consulta y transferencia de información pública para
 			lograr la interconexión y operación simultánea de los sistemas operantes en la órbita de la
@@ -48,9 +48,9 @@
 			ciudadanos, colaborando con un estado más justo con administración de recursos equitativos y
 			disminución de brechas sociales.
 		</p>
-		<h4 class="font-semibold text-gray-500 dark:text-gray-400 text-3xl mb-2 mt-2">Ejes</h4>
+		<h4 class="font-semibold text-gray-500 dark:text-gray-400 text-2xl mb-2 mt-2">Ejes</h4>
 		<FancyList items={ejes} />
-		<h4 class="font-semibold text-gray-500 dark:text-gray-400 text-3xl mb-2 mt-2">
+		<h4 class="font-semibold text-gray-500 dark:text-gray-400 text-2xl mb-2 mt-2">
 			Proyectos de Integracion
 		</h4>
 		<p class="mb-3 text-lg font-light text-gray-500 md:text-xl dark:text-gray-400">

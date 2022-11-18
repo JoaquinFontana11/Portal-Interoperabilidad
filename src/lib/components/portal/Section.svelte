@@ -19,9 +19,9 @@
 	<h2
 		class={`${
 			direction == 'center' ? 'text-center' : direction == 'left' ? 'text-left' : 'text-right'
-		} mb-8 text-4xl font-extrabold tracking-tight leading-none ${
+		} mb-8 text-3xl font-bold tracking-tight leading-none ${
 			config.titleColor
-		} md:text-5xl lg:text-6xl dark:text-white`}
+		} md:text-4xl lg:text-5xl dark:text-white`}
 	>
 		{title}
 	</h2>

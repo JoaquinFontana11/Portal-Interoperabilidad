@@ -15,6 +15,7 @@
 	let filterServs = '';
 	let page = 0;
 	const ePerPage = 10;
+	console.log(services);
 </script>
 
 <Section
@@ -24,7 +25,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-lg p-10 flex flex-col">
+	<div class="bg-neutral-50 rounded-lg shadow-lg p-10 flex flex-col z-10 relative">
 		<div class="w-96 relative self-end">
 			<AdminSearchInput placeholder="Ingrese nombre del servicio..." bind:value={filterServs} />
 		</div>
@@ -80,7 +81,7 @@
 						>
 							<div class="py-5 font-light border-b border-gray-200 dark:border-gray-700">
 								<p class="mb-2 text-gray-500 dark:text-gray-400">
-									{service.function}
+									{@html service.function}
 								</p>
 							</div>
 						</div>
