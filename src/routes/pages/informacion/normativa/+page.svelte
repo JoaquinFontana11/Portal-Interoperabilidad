@@ -9,7 +9,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-md p-10 flex flex-col">
+	<div class="bg-gray-50 rounded-lg shadow-md p-10 flex flex-col relative z-10">
 		<p class="mb-3 text-lg font-light text-gray-500 md:text-xl dark:text-gray-400">
 			El proyecto de Interoperabilidad de datos de la Provincia de Buenos Aires se implementó en
 			Octubre de 2019. Su ejecución está a cargo de la Dirección Provincial de Mejora

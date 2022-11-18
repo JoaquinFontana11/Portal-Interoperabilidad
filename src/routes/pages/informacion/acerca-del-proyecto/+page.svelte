@@ -33,7 +33,7 @@
 		backgroundColor: 'bg-transparent'
 	}}
 >
-	<div class="bg-gray-50 rounded-lg shadow-md p-10 flex flex-col">
+	<div class="bg-gray-50 rounded-lg shadow-md p-10 flex flex-col relative z-10">
 		<p class="mb-3 text-lg font-light text-gray-500 md:text-xl dark:text-gray-400">
 			El portal de interoperabilidad es el sitio web de gestión y canal institucional, a través del
 			cual se dará publicidad a los servicios de información disponibles, detallando las bases y

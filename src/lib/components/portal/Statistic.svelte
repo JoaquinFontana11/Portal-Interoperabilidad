@@ -11,7 +11,9 @@
 	const graphBarFloating = graphs.find((graph) => graph.type == 'bar-floating');
 </script>
 
-<div class="bg-gray-100 rounded-lg shadow-lg p-10 grid grid-cols-4 gap-10 grid-flow-row-dense">
+<div
+	class="bg-gray-100 rounded-lg shadow-lg p-10 grid grid-cols-4 gap-10 grid-flow-row-dense relative z-10"
+>
 	<div
 		class="bg-white h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-3 shadow-lg"
 	>

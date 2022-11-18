@@ -5,7 +5,7 @@
 	console.log(novelty);
 </script>
 
-<div class="p-10 min-h-screen">
+<div class="p-10 min-h-screen relative z-10">
 	<div class="bg-gray-50 rounded-md shadow-md p-10 h-full">
 		<img class="rounded-lg p-5 float-right w-1/2 " src={novelty.image} alt="" />
 		<p class="text-gray-500 text-sm">{novelty.date.split('T')[0]}</p>

@@ -6,6 +6,7 @@
 	let responsiveNavDrop = true;
 
 	const closeSubmenus = (e: Event) => {
+		if (responsiveNavDrop) return;
 		if (e.clientY < 100) return;
 		menus = menus.map((menu) => {
 			menu.drop = false;

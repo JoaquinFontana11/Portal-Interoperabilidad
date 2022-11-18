@@ -40,7 +40,7 @@
 >
 	<form
 		on:submit|preventDefault={sendMail}
-		class="flex gap-3 w-1/2 ml-auto mr-auto bg-gray-100 rounded-lg shadow-lg p-10 max-h-96"
+		class="flex gap-3 w-1/2 ml-auto mr-auto bg-gray-100 rounded-lg shadow-lg p-10 max-h-96 relative z-10"
 	>
 		<div class="flex flex-col gap-3 w-full">
 			<div>
