@@ -72,56 +72,54 @@
 									{file.name}</a
 								>
 							</div>
-							{#if file.description}
-								<div class="flex gap-1">
-									<p
-										class=" items-center text-base font-light text-gray-900 dark:text-white max-w-sm truncate"
-									>
-										{file.description}
-									</p>
-									<button
-										type="button"
-										class={`flex items-center justify-between font-medium text-left text-gray-500 ${
-											file.drop ? 'r' : ' border-gray-200'
-										} dark:border-gray-700 dark:text-gray-400 duration-75`}
-										data-accordion-target="#accordion-flush-body-1"
-										aria-expanded="true"
-										aria-controls="accordion-flush-body-1"
-										on:click={(e) => {
-											file.drop = !file.drop;
-										}}
-									>
-										{#if file.drop}
-											<svg
-												class="w-4 h-4"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												><path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
-													d="M20 12H4"
-												/></svg
-											>
-										{:else}
-											<svg
-												class="w-5 h-5"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-												xmlns="http://www.w3.org/2000/svg"
-												><path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
-													d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-												/></svg
-											>{/if}
-									</button>
-								</div>
-							{/if}
+							<div class="flex gap-1">
+								<p
+									class=" items-center text-base font-light text-gray-900 dark:text-white max-w-sm truncate"
+								>
+									{file.description}
+								</p>
+								<button
+									type="button"
+									class={`flex items-center justify-between font-medium text-left text-gray-500 ${
+										file.drop ? 'r' : ' border-gray-200'
+									} dark:border-gray-700 dark:text-gray-400 duration-75`}
+									data-accordion-target="#accordion-flush-body-1"
+									aria-expanded="true"
+									aria-controls="accordion-flush-body-1"
+									on:click={(e) => {
+										file.drop = !file.drop;
+									}}
+								>
+									{#if file.drop}
+										<svg
+											class="w-4 h-4"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											xmlns="http://www.w3.org/2000/svg"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M20 12H4"
+											/></svg
+										>
+									{:else}
+										<svg
+											class="w-5 h-5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											xmlns="http://www.w3.org/2000/svg"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+											/></svg
+										>{/if}
+								</button>
+							</div>
 							<div class="flex gap-3">
 								<p
 									class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
@@ -146,9 +144,9 @@
 									easing: quintOut
 								}}
 							>
-								<div class="pt-5 font-light">
+								<div class="pt-5 px-5 font-light">
 									<p class="mb-2 text-gray-500 dark:text-gray-400">
-										{file.description ? file.description : ''}
+										{file.description}
 									</p>
 								</div>
 							</div>
