@@ -1,13 +1,21 @@
 <script lang="ts">
 	import { Document, Table, VideoCamera, PresentationChartBar, Icon } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
+	import { quintOut } from 'svelte/easing';
 	import Section from '$lib/components/portal/Section.svelte';
 	import AdminSearchInput from '$lib/components/AdminSearchInput.svelte';
 	import Pagination from '$lib/components/portal/Pagination.svelte';
+	import { validate_each_keys } from 'svelte/internal';
 
 	export let data: PageData;
+	console.log(data);
+	let files = JSON.parse(data.files).map((f) => {
+		f.drop = false;
+		return f;
+	});
+	console.log(files);
 	let filterFiles = '';
 	let page = 0;
 	const ePerPage = 10;
@@ -36,7 +44,7 @@
 			<AdminSearchInput placeholder="Ingrese nombre de archivo..." bind:value={filterFiles} />
 		</div>
 		<ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
-			{#each JSON.parse(data.files)
+			{#each files
 				.filter((file) => file.name.toLowerCase().includes(filterFiles))
 				.slice(page * ePerPage, page * ePerPage + ePerPage) as file (file._id)}
 				<div in:fade={{ duration: 300 }} animate:flip={{ duration: 300 }}>
@@ -64,26 +72,94 @@
 									{file.name}</a
 								>
 							</div>
+							{#if file.description}
+								<div class="flex gap-1">
+									<p
+										class=" items-center text-base font-light text-gray-900 dark:text-white max-w-sm truncate"
+									>
+										{file.description}
+									</p>
+									<button
+										type="button"
+										class={`flex items-center justify-between font-medium text-left text-gray-500 ${
+											file.drop ? 'r' : ' border-gray-200'
+										} dark:border-gray-700 dark:text-gray-400 duration-75`}
+										data-accordion-target="#accordion-flush-body-1"
+										aria-expanded="true"
+										aria-controls="accordion-flush-body-1"
+										on:click={(e) => {
+											file.drop = !file.drop;
+										}}
+									>
+										{#if file.drop}
+											<svg
+												class="w-4 h-4"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												><path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M20 12H4"
+												/></svg
+											>
+										{:else}
+											<svg
+												class="w-5 h-5"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												><path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+												/></svg
+											>{/if}
+									</button>
+								</div>
+							{/if}
 							<div class="flex gap-3">
 								<p
 									class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
 								>
-									{file.description ? file.description : ''}
-								</p>
-								<p
-									class="inline-flex items-center text-base font-light text-gray-900 dark:text-white"
-								>
-									{(file.size / 1048576).toFixed(0)} MB
+									{#if (file.size / 1048576).toFixed(2) > 1}
+										{(file.size / 1048576).toFixed(2)} MB
+									{:else}
+										{(file.size / 1024).toFixed(2)} KB
+									{/if}
 								</p>
 							</div>
 						</div>
+						{#if file.drop}
+							<div
+								id="accordion-flush-body-1"
+								aria-labelledby="accordion-flush-heading-1"
+								transition:fly={{
+									duration: 200,
+									x: 0,
+									y: -10,
+									opacity: 0.1,
+									easing: quintOut
+								}}
+							>
+								<div class="pt-5 font-light">
+									<p class="mb-2 text-gray-500 dark:text-gray-400">
+										{file.description ? file.description : ''}
+									</p>
+								</div>
+							</div>
+						{/if}
 					</li>
 				</div>
 			{/each}
 		</ul>
-		{#if ePerPage < JSON.parse(data.files).length}
+		{#if ePerPage < files.length}
 			<div class=" relative self-end">
-				<Pagination bind:value={page} maxPage={JSON.parse(data.files).length / ePerPage} />
+				<Pagination bind:value={page} maxPage={files.length / ePerPage} />
 			</div>
 		{/if}
 	</div>
