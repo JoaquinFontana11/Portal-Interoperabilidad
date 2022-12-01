@@ -7,7 +7,6 @@
 	import Section from '$lib/components/portal/Section.svelte';
 	import AdminSearchInput from '$lib/components/AdminSearchInput.svelte';
 	import Pagination from '$lib/components/portal/Pagination.svelte';
-	import { validate_each_keys } from 'svelte/internal';
 
 	export let data: PageData;
 	console.log(data);

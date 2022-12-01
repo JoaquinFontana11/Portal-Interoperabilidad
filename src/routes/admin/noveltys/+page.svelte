@@ -38,7 +38,7 @@
 		},
 		{
 			type: 'text',
-			label: 'Url de la novedad (Poner un selector de imagen)',
+			label: 'Url de la Imagen (Seleccionar desde el boton imagen)',
 			name: 'image',
 			value: '',
 			required: true
