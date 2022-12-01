@@ -3,7 +3,7 @@
 	import Statistic from '$lib/components/portal/Statistic.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	console.log(data.graphs);
+	console.log(JSON.parse(data.graphs));
 </script>
 
 <Section

@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full z-10 relative">
+	<div class="grid grid-cols-5 md:grid-cols-3 items-center w-full z-10 relative gap-5">
 		{#each noveltys.filter((novelty) => novelty.title
 				.toLowerCase()
 				.includes(filterNoveltys)) as novelty (novelty._id)}

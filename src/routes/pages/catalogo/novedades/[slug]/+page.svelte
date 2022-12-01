@@ -24,7 +24,7 @@
 			</p>
 		</div>
 		<div class="row-start-2 row-span-3">
-			<div class="text-justify indent-5 mb-3 text-lg font-light text-gray-500 md:text-xl">
+			<div class=" indent-5 mb-3 text-lg font-light text-gray-500 md:text-xl">
 				{@html novelty.body}
 			</div>
 		</div>
