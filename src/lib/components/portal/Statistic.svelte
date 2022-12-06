@@ -21,7 +21,7 @@
 			>{graphBar.title}</span
 		>
 		<BarChartSimple
-			data={graphBarFloating.data.map((data) => {
+			data={graphBar.data.map((data) => {
 				return {
 					group: data.name,
 					value: data.value
@@ -37,7 +37,7 @@
 					bottom: { mapsTo: 'group', scaleType: 'labels' }
 				},
 				color: {
-					scale: getColors(graphBarFloating.data.map((data) => data.name))
+					scale: getColors(graphBar.data.map((data) => data.name))
 				}
 			}}
 		/>
@@ -89,7 +89,7 @@
 		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-2 shadow-lg"
 	>
 		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
-			>{graphBar.title}</span
+			>{graphBarFloating.title}</span
 		>
 		<BarChartSimple
 			data={graphBarFloating.data.map((data) => {
