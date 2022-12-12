@@ -86,7 +86,7 @@
 				>
 					<div
 						class={`absolute w-3 h-3 ${
-							current == i ? 'bg-sky-400' : 'bg-gray-200 '
+							current == i ? 'bg-[#e81f76]' : 'bg-gray-200 '
 						} rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700`}
 					/>
 					<time

@@ -42,7 +42,7 @@
 					<h2 id="accordion-flush-heading-1">
 						<button
 							type="button"
-							class={`flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 ${
+							class={`flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 ${
 								service.drop ? 'r' : 'border-b border-gray-200'
 							} dark:border-gray-700 dark:text-gray-400 duration-75`}
 							data-accordion-target="#accordion-flush-body-1"

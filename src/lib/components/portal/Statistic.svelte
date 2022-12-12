@@ -17,7 +17,7 @@
 	<div
 		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-3 shadow-lg z-10"
 	>
-		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
+		<span class="absolute top-5 left-5 mb-3 font-light text-gray-900 dark:text-gray-400"
 			>{graphBar.title}</span
 		>
 		<BarChartSimple
@@ -46,7 +46,7 @@
 		<div
 			class="bg-neutral-50 h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
 		>
-			<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
+			<span class="absolute top-5 left-5 mb-3 font-light text-gray-900 dark:text-gray-400"
 				>total de servicios</span
 			>
 			<p class="text-6xl font-semibold">1500</p>
@@ -54,7 +54,7 @@
 		<div
 			class="bg-neutral-50 h-full justify-self-right rounded-lg relative p-3 flex justify-center items-center shadow-lg"
 		>
-			<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
+			<span class="absolute top-5 left-5 mb-3 font-light text-gray-900 dark:text-gray-400"
 				>organismos conectados</span
 			>
 			<p class="text-6xl font-semibold">5173</p>
@@ -63,7 +63,7 @@
 	<div
 		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative flex justify-center items-center col-span-2 shadow-lg"
 	>
-		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
+		<span class="absolute top-5 left-5 mb-3 font-light text-gray-900 dark:text-gray-400"
 			>{graphPie.title}</span
 		>
 		<PieChart
@@ -88,7 +88,7 @@
 	<div
 		class="bg-neutral-50 h-[600px] justify-self-right rounded-lg relative p-3 flex justify-center items-center col-span-2 shadow-lg"
 	>
-		<span class="absolute top-5 left-5 mb-3 font-light text-gray-500 dark:text-gray-400"
+		<span class="absolute top-5 left-5 mb-3 font-light text-gray-900 dark:text-gray-400"
 			>{graphBarFloating.title}</span
 		>
 		<BarChartSimple

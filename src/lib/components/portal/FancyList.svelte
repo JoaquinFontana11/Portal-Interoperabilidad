@@ -53,7 +53,7 @@
 				</p>
 				{#if itemSelecteds[i]}
 					<span
-						class=" text-gray-500 dark:text-gray-400 font-light"
+						class=" text-gray-900 text-justify dark:text-gray-400 font-light"
 						in:slide={{ duration: 500, easing: quintOut }}>{item.content}</span
 					>
 				{/if}

@@ -6,7 +6,9 @@
 		LightningBolt,
 		Home,
 		PresentationChartBar,
-		BadgeCheck
+		BadgeCheck,
+		SwitchVertical,
+		DesktopComputer
 	} from 'svelte-hero-icons';
 	import Section from '$lib/components/portal/Section.svelte';
 	import Timeline from '$lib/components/portal/Timeline.svelte';
@@ -21,7 +23,7 @@
 		},
 		{
 			content: 'Mayor integracion y desarrollo de la sociedad',
-			icon: Home
+			icon: SwitchVertical
 		},
 		{
 			content: 'Agilidad y facilidad en las gestiones administrativas',
@@ -29,7 +31,7 @@
 		},
 		{
 			content: 'Optimización de recursos minimizando los datos registrados manualmente',
-			icon: PresentationChartBar
+			icon: DesktopComputer
 		}
 	];
 
@@ -91,7 +93,7 @@
 	];
 </script>
 
-<div class="h-128 w-fu bg-cover bg-center bg-hero-pattern flex items-center justify-center">
+<div class="h-[35rem] w-fu bg-cover bg-center bg-hero-pattern flex items-center justify-center">
 	<img src="/img/IOP.png" class="h-56" alt="logo interoperabilidad" />
 </div>
 <Section
@@ -99,7 +101,7 @@
 	overview="Objetivos y beneficios"
 	config={{
 		titleColor: 'text-gray-900',
-		backgroundColor: 'bg-slate-50'
+		backgroundColor: 'bg-slate-100'
 	}}
 >
 	<p
@@ -122,14 +124,21 @@
 			>
 				<Icon
 					src={objetivo.icon}
-					class="w-10 h-10 text-sky-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+					class="w-10 h-10 text-[#e81f76] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 				/>
 				<p class="font-normal text-gray-700 dark:text-gray-400 text-center">{objetivo.content}</p>
 			</div>
 		{/each}
 	</div>
 </Section>
-<Section title="Nuestro recorrido" overview="Conoce un poco mas sobre nosotros" direction="center">
+<Section
+	title="Nuestro recorrido"
+	overview="Conoce un poco mas sobre nosotros"
+	direction="center"
+	config={{
+		backgroundColor: 'bg-gray-50'
+	}}
+>
 	<Timeline info={timeline} />
 	<a
 		href="/pages/informacion/acerca-del-proyecto"
@@ -156,7 +165,7 @@
 	direction="center"
 	config={{
 		titleColor: 'text-gray-900',
-		backgroundColor: 'bg-slate-50'
+		backgroundColor: 'bg-slate-100'
 	}}
 >
 	<Noveltys noveltys={JSON.parse(data.noveltys).slice(0, 3)} />
