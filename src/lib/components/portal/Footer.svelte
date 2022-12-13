@@ -2,11 +2,9 @@
 	export let links;
 </script>
 
-<footer class="p-4 bg-gradient-to-b from-slate-100 to-slate-200 relative">
+<footer class="p-4 relative bg-slate-200">
 	<!-- <img src="/img/textura_footer.png" alt="textura del footer" class="w-full h-50" /> -->
-	<div
-		class="w-full h-28 absolute bottom-[100%] left-0 z-0 bg-[url('/img/textura_footer.png')] bg-[length:400px]"
-	/>
+	<div class="w-full h-56 absolute bottom-[100%] left-0 z-0 bg-footer bg-[length:800px]" />
 	<div class="md:flex md:justify-between">
 		<div class="mb-6 md:mb-0">
 			<a href="/home" class="flex items-center justify-center">

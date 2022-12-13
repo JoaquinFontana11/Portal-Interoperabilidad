@@ -101,7 +101,7 @@
 	overview="Objetivos y beneficios"
 	config={{
 		titleColor: 'text-gray-900',
-		backgroundColor: 'bg-slate-100'
+		backgroundColor: 'bg-gray-50'
 	}}
 >
 	<p
@@ -136,7 +136,7 @@
 	overview="Conoce un poco mas sobre nosotros"
 	direction="center"
 	config={{
-		backgroundColor: 'bg-gray-50'
+		backgroundColor: 'bg-slate-100'
 	}}
 >
 	<Timeline info={timeline} />
@@ -165,7 +165,7 @@
 	direction="center"
 	config={{
 		titleColor: 'text-gray-900',
-		backgroundColor: 'bg-slate-100'
+		backgroundColor: 'bg-gray-50'
 	}}
 >
 	<Noveltys noveltys={JSON.parse(data.noveltys).slice(0, 3)} />
