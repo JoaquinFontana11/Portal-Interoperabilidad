@@ -7,6 +7,10 @@ Portal para Interoperabilidad
 - Svelte-Kit
 - TypeScript
 
+### Base de Datos
+
+- MongoDB
+
 ## Alojamiento
 
 ### Entorno de Desarrollo
